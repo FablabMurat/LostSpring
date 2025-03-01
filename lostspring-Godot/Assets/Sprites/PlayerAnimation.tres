@@ -74,7 +74,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idleFace",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -82,7 +82,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idleSide",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -105,7 +105,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"runDown",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -119,7 +119,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"runSide",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -142,5 +142,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"runUp",
-"speed": 5.0
+"speed": 10.0
 }]

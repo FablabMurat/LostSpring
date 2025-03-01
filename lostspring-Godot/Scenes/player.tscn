@@ -7,6 +7,7 @@
 size = Vector2(6, 8)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_qk7fi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -16,5 +17,5 @@ shape = SubResource("RectangleShape2D_4w0gd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_7ahdy")
-animation = &"idle"
+animation = &"idleFace"
 autoplay = "walk"

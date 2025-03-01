@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjy7a3o41ejpt"]
+
+[ext_resource type="PackedScene" uid="uid://cdi2waamsj162" path="res://Scenes/player.tscn" id="1_dehm5"]
+[ext_resource type="PackedScene" uid="uid://cp7l8wc1wb2ek" path="res://Scenes/forestBlock0.tscn" id="3_ol4ld"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Player1" parent="." instance=ExtResource("1_dehm5")]
+position = Vector2(147, 274)
+speed = 45
+
+[node name="Player2" parent="." instance=ExtResource("1_dehm5")]
+position = Vector2(261, 270)
+speed = 45
+
+[node name="ForestBlock0" parent="." instance=ExtResource("3_ol4ld")]
+z_index = -2
+position = Vector2(190, 296)

@@ -1,34 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://c27ta3g77kwvm"]
+[gd_scene load_steps=3 format=3 uid="uid://c27ta3g77kwvm"]
 
-[ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain.tscn" id="2_g4gq2"]
-[ext_resource type="PackedScene" uid="uid://cdi2waamsj162" path="res://Scenes/player.tscn" id="2_xgq1v"]
-[ext_resource type="PackedScene" uid="uid://cp7l8wc1wb2ek" path="res://Scenes/forestBlock0.tscn" id="3_lteqw"]
+[ext_resource type="PackedScene" uid="uid://bjy7a3o41ejpt" path="res://Scenes/level_1.tscn" id="2_iypa6"]
+[ext_resource type="Script" path="res://Scripts/cameras.gd" id="4_xp2fc"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("4_xp2fc")
 
-[node name="Player1" parent="." instance=ExtResource("2_xgq1v")]
-position = Vector2(627, 276)
-speed = 45
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(384, 216)
+offset_right = 1028.0
+offset_bottom = 541.0
 
-[node name="Terrain" parent="." instance=ExtResource("2_g4gq2")]
-z_index = -1
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(192, 216)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Player2" parent="." instance=ExtResource("2_xgq1v")]
-position = Vector2(574, 275)
-speed = 45
+[node name="Viewport2" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(192, 216)
+render_target_update_mode = 4
 
-[node name="ForestBlock0" parent="." instance=ExtResource("3_lteqw")]
-z_index = -2
-position = Vector2(564, 298)
+[node name="Camera2" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/Viewport2"]
+position = Vector2(1719.26, 825)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(573.085, 275)
-zoom = Vector2(7.175, 7.175)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(192, 216)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(617, 377)
+[node name="Viewport1" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(192, 216)
+render_target_update_mode = 4
 
-[node name="SubViewport2" type="SubViewport" parent="."]
+[node name="Camera1" type="Camera2D" parent="HBoxContainer/SubViewportContainer/Viewport1"]
+position = Vector2(1044, 810)
+scale = Vector2(3, 3)
 
-[node name="Camera2D" type="Camera2D" parent="SubViewport2"]
-position = Vector2(348, 270)
+[node name="Level" parent="HBoxContainer/SubViewportContainer/Viewport1" instance=ExtResource("2_iypa6")]
+texture_filter = 1
+position = Vector2(-181, -145)

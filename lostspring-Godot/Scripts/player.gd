@@ -4,7 +4,8 @@ extends CharacterBody2D
 @export var speed = 200
 var arrayInput = ["left","right","top","bottom"]
 @onready var playerSprite = $AnimatedSprite2D
-var flowerArray = []
+
+var grabbedFlowerColor = "none";
 func _ready():
 	var screen_size = get_viewport_rect().size
 	print(name)
@@ -13,13 +14,7 @@ func _ready():
 		var num_str: String = name
 		var num: int = num_str.right(num_str.length()-9).to_int()
 		arrayInput[i] = arrayInput[i] + str(num)
-	var grid_width = 2
-	var flowerNumber = 5
-	for i in grid_width:
-		flowerArray.append([])
-		for j in flowerNumber:
-			flowerArray[i].append(0) # Set a starter value for each position
-			print("entrée fleurs" + str(flowerArray[i][j]))
+	
 			
 func _physics_process(delta):
 	
@@ -60,5 +55,19 @@ func _on_flower_yellow__entered(flowerName: Variant) -> void:
 	prints(str(flowerPath) + "/flowerSprite")
 	animatedFlower.play()
 	var colorName = flowerName.name.substr(6,-1)
-	
-	
+	grabbedFlowerColor = colorName
+	print("grabbed flower color is " + colorName) 
+
+
+func _on_flower_holder__entered(holderName: Variant) -> void:
+	var holderPath = holderName.get_path()
+	var animatedHolder = get_node(str(holderPath) + "/flowerHolderSprite")
+	prints(str(holderPath) + "/flowerHolderSprite")
+	var colorName = holderName.name.substr(12,-1)
+	if colorName == grabbedFlowerColor:
+		animatedHolder.play()
+		print("door" + colorName + "open")
+		var currentDoor = get_node(str(holderPath)+"/../Door"+colorName)
+		currentDoor.set_collision_layer_value(1,0)
+		var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
+		currentDoorSprite.play()

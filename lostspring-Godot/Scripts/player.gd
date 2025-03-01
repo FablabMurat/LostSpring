@@ -5,6 +5,7 @@ extends CharacterBody2D
 var arrayInput = ["left","right","top","bottom"]
 @onready var playerSprite = $AnimatedSprite2D
 
+var flowerArray = ["flower","color"]
 
 func _ready():
 	var screen_size = get_viewport_rect().size
@@ -45,3 +46,14 @@ func _physics_process(delta):
 	playerSprite.play()
 	
 	move_and_slide()
+
+
+func _on_static_body_2d_body_entered(body: Node2D) -> void:
+	flowerArray[1] = "yellow"
+	$"../Flower/flowerSprite".play()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if flowerArray[1] == "yellow":
+		$"../StaticBody2D".set_collision_layer_value(1,false)
+		print("porte ouverte") 

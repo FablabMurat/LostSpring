@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=4 uid="uid://dmsbukicybiou"]
 
-[ext_resource type="SpriteFrames" path="res://Assets/Sprites/Animations/fire.tres" id="2_7oxwk"]
+[ext_resource type="SpriteFrames" uid="uid://b15b6eo8d36wy" path="res://Assets/Sprites/Animations/fire.tres" id="2_7oxwk"]
 [ext_resource type="Texture2D" uid="uid://b5lcdt5q618b6" path="res://Scenes/level1.svg" id="2_dlm88"]
-[ext_resource type="TileSet" uid="uid://d1hgvmfed6dmn" path="res://Scenes/scenesBlocks.tres" id="2_saec4"]
+[ext_resource type="TileSet" uid="uid://b5bwtpr3edyje" path="res://Scenes/scenesBlocks.tres" id="2_saec4"]
 
 [node name="Terrain" type="Node2D"]
 

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/monster.gd" id="5_0fg1x"]
 [ext_resource type="PackedScene" uid="uid://d0p8wy6x5sx7p" path="res://Scenes/door.tscn" id="5_rldx3"]
 [ext_resource type="PackedScene" uid="uid://bp1ndvjst2xnj" path="res://Scenes/monster.tscn" id="7_8u10c"]
-[ext_resource type="PackedScene" uid="uid://bj0ldcjsx08g4" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
+[ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
 [ext_resource type="Script" path="res://Scenes/flower.gd" id="7_igdww"]
 [ext_resource type="Script" path="res://Scenes/door.gd" id="8_fb3g8"]
 
@@ -63,7 +63,6 @@ script = ExtResource("7_igdww")
 z_index = -2
 texture_filter = 1
 position = Vector2(544, 2496)
-metadata/_edit_lock_ = true
 
 [node name="DoorYellow" parent="." instance=ExtResource("5_rldx3")]
 script = ExtResource("8_fb3g8")

@@ -46,6 +46,22 @@ script = ExtResource("3_q37o3")
 position = Vector2(448, 4136)
 script = ExtResource("3_q37o3")
 
+[node name="flowerHolderOlive" parent="." instance=ExtResource("3_1edhd")]
+position = Vector2(832, 1672)
+script = ExtResource("3_q37o3")
+
+[node name="FlowerOlive" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
+position = Vector2(472, 2040)
+script = ExtResource("7_igdww")
+
+[node name="flowerHolderTeal" parent="." instance=ExtResource("3_1edhd")]
+position = Vector2(816, 2568)
+script = ExtResource("3_q37o3")
+
+[node name="FlowerTeal" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
+position = Vector2(112, 2904)
+script = ExtResource("7_igdww")
+
 [node name="Monster" parent="." instance=ExtResource("7_8u10c")]
 z_index = 1
 position = Vector2(504, 120)
@@ -71,7 +87,7 @@ script = ExtResource("7_igdww")
 position = Vector2(464, 4488)
 script = ExtResource("7_igdww")
 
-[node name="FlowerSky_Orange" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
+[node name="FlowerOrange" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
 position = Vector2(816, 3624)
 script = ExtResource("7_igdww")
 
@@ -90,6 +106,14 @@ script = ExtResource("8_fb3g8")
 
 [node name="DoorOrange" parent="." instance=ExtResource("5_rldx3")]
 position = Vector2(416, 1232)
+script = ExtResource("8_fb3g8")
+
+[node name="DoorTeal" parent="." instance=ExtResource("5_rldx3")]
+position = Vector2(416, 2240)
+script = ExtResource("8_fb3g8")
+
+[node name="DoorOlive" parent="." instance=ExtResource("5_rldx3")]
+position = Vector2(416, 2480)
 script = ExtResource("8_fb3g8")
 
 [node name="DoorGreen" parent="." instance=ExtResource("5_rldx3")]
@@ -116,6 +140,14 @@ script = ExtResource("8_fb3g8")
 [connection signal="body_entered" from="flowerHolderSky_Blue" to="flowerHolderSky_Blue" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderOrange" to="Player1" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderOrange" to="flowerHolderOrange" method="_on_body_entered"]
+[connection signal="_entered" from="flowerHolderOlive" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="body_entered" from="flowerHolderOlive" to="flowerHolderOlive" method="_on_body_entered"]
+[connection signal="_entered" from="FlowerOlive" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="body_entered" from="FlowerOlive" to="FlowerOlive" method="_on_body_entered"]
+[connection signal="_entered" from="flowerHolderTeal" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="body_entered" from="flowerHolderTeal" to="flowerHolderTeal" method="_on_body_entered"]
+[connection signal="_entered" from="FlowerTeal" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="body_entered" from="FlowerTeal" to="FlowerTeal" method="_on_body_entered"]
 [connection signal="_entered" from="Monster" to="Player1" method="_on_monster__entered"]
 [connection signal="body_entered" from="Monster" to="Monster" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerYellow" to="Player1" method="_on_flower_yellow__entered"]
@@ -128,5 +160,5 @@ script = ExtResource("8_fb3g8")
 [connection signal="body_entered" from="FlowerCyan" to="FlowerCyan" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerSky_Blue" to="Player1" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerSky_Blue" to="FlowerSky_Blue" method="_on_body_entered"]
-[connection signal="_entered" from="FlowerSky_Orange" to="Player1" method="_on_flower_yellow__entered"]
-[connection signal="body_entered" from="FlowerSky_Orange" to="FlowerSky_Orange" method="_on_body_entered"]
+[connection signal="_entered" from="FlowerOrange" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="body_entered" from="FlowerOrange" to="FlowerOrange" method="_on_body_entered"]

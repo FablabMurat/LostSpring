@@ -8,14 +8,14 @@
 
 [node name="Player1" parent="." instance=ExtResource("2_xgq1v")]
 position = Vector2(627, 276)
-speed = 45
+speed = null
 
 [node name="Terrain" parent="." instance=ExtResource("2_g4gq2")]
 z_index = -1
 
 [node name="Player2" parent="." instance=ExtResource("2_xgq1v")]
 position = Vector2(574, 275)
-speed = 45
+speed = null
 
 [node name="ForestBlock0" parent="." instance=ExtResource("3_lteqw")]
 z_index = -2

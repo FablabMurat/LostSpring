@@ -16,5 +16,5 @@ shape = SubResource("RectangleShape2D_4w0gd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_7ahdy")
-animation = &"walk"
+animation = &"idle"
 autoplay = "walk"

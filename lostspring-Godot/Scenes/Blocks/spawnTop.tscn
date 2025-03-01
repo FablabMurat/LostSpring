@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=4 uid="uid://d0j7oigpf6pm5"]
 
-[ext_resource type="TileSet" uid="uid://dk087yyqpkgbj" path="res://Assets/TileSet/Terrain.tres" id="1_khf88"]
+[ext_resource type="TileSet" uid="uid://1lce6a8512hr" path="res://Assets/TileSet/Terrain.tres" id="1_khf88"]
 
 [node name="ForestBlock0" type="Node2D"]
 

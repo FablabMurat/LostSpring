@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c27ta3g77kwvm"]
 
 [ext_resource type="PackedScene" uid="uid://bjy7a3o41ejpt" path="res://Scenes/level_1.tscn" id="2_iypa6"]
-[ext_resource type="AudioStream" uid="uid://dbxignpwb7oo5" path="res://Assets/Sound/ambiant2.wav" id="3_4v0a1"]
+[ext_resource type="Texture2D" uid="uid://c80q1g71jmaq1" path="res://Assets/Sprites/playerFrame192x216.png" id="4_rs0r1"]
 [ext_resource type="Script" path="res://Scripts/cameras.gd" id="4_xp2fc"]
 
 [node name="Node2D" type="Node2D"]
@@ -11,6 +11,7 @@ script = ExtResource("4_xp2fc")
 custom_minimum_size = Vector2(384, 216)
 offset_right = 1028.0
 offset_bottom = 541.0
+metadata/_edit_lock_ = true
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(192, 216)
@@ -29,6 +30,7 @@ position = Vector2(1719.26, 825)
 custom_minimum_size = Vector2(192, 216)
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Viewport1" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
 handle_input_locally = false
@@ -43,6 +45,13 @@ scale = Vector2(3, 3)
 texture_filter = 1
 position = Vector2(-181, -145)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_4v0a1")
-autoplay = true
+[node name="PlayerFrame192x216" type="Sprite2D" parent="."]
+position = Vector2(288, 108)
+texture = ExtResource("4_rs0r1")
+hframes = 3
+
+[node name="PlayerFrame192x217" type="Sprite2D" parent="."]
+position = Vector2(288, 108)
+texture = ExtResource("4_rs0r1")
+offset = Vector2(-192, 0)
+hframes = 3

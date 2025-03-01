@@ -12,7 +12,6 @@ extends Node2D
 	}
 }
 
-
 func _ready() -> void:
 	# The world_2d object of the viewport contains information about what to
 	# render. Here, it's our game level. We need to pass it from the first to

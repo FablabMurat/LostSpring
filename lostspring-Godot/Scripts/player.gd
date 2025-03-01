@@ -5,7 +5,7 @@ extends CharacterBody2D
 var arrayInput = ["left","right","top","bottom"]
 @onready var playerSprite = $AnimatedSprite2D
 
-var flowerArray = ["key","color"]
+var flowerArray = []
 
 func _ready():
 	var screen_size = get_viewport_rect().size
@@ -17,6 +17,13 @@ func _ready():
 		print(num)
 		arrayInput[i] = arrayInput[i] + str(num)
 		print(arrayInput[i])
+	var grid_width = 2
+	var flowerNumber = 5
+	for i in grid_width:
+		flowerArray.append([])
+		for j in flowerNumber:
+			flowerArray[i].append(0) # Set a starter value for each position
+		
 func _physics_process(delta):
 	
 	var direction = Vector2(0,0)
@@ -48,8 +55,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_flower_body_entered(body: Node2D) -> void:
-	flowerArray[1] = "yellow"
-	$"../Flower/flowerSprite".play()
+	print("body enter" + body.name)
+	#substr(6,-1)
+	flowerArray[1][1] = "yellow"
+	$"../FlowerYellow/flowerSprite".play()
 
 
 func _on_flower_holder_body_entered(body: Node2D) -> void:

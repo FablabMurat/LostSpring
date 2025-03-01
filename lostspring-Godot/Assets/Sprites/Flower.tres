@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://5pxahgas50td"]
+
+[ext_resource type="Texture2D" uid="uid://4xlnjij3evel" path="res://Assets/Sprites/LostSpring_SPRITE_FLOWER.png" id="1_mhrd2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0unf"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkkg5"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1y6o"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlyya"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sj8m"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gsae"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utdil"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynsum"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raihd"]
+atlas = ExtResource("1_mhrd2")
+region = Rect2(64, 0, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0unf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkkg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1y6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlyya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sj8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gsae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utdil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynsum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raihd")
+}],
+"loop": false,
+"name": &"pickUp",
+"speed": 14.0
+}]

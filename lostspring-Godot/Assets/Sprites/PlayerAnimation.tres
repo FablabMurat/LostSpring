@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bwx25aajyunh5"]
+
+[ext_resource type="Texture2D" uid="uid://b8gy1hd1lh27s" path="res://Assets/TileSet/forestTileSet.png" id="1_l6i0t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmjwr"]
+atlas = ExtResource("1_l6i0t")
+region = Rect2(88, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr5hw"]
+atlas = ExtResource("1_l6i0t")
+region = Rect2(72, 16, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmjwr")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr5hw")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

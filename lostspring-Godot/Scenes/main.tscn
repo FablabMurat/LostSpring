@@ -1,15 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://c27ta3g77kwvm"]
+[gd_scene load_steps=4 format=3 uid="uid://c27ta3g77kwvm"]
 
 [ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain.tscn" id="2_g4gq2"]
 [ext_resource type="PackedScene" uid="uid://cdi2waamsj162" path="res://Scenes/player.tscn" id="2_xgq1v"]
+[ext_resource type="PackedScene" uid="uid://cp7l8wc1wb2ek" path="res://Scenes/forestBlock0.tscn" id="3_lteqw"]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Player2" parent="." instance=ExtResource("2_xgq1v")]
-position = Vector2(574, 275)
 
 [node name="Player1" parent="." instance=ExtResource("2_xgq1v")]
 position = Vector2(348, 270)
 
 [node name="Terrain" parent="." instance=ExtResource("2_g4gq2")]
 z_index = -1
+
+[node name="Player2" parent="." instance=ExtResource("2_xgq1v")]
+position = Vector2(574, 275)
+
+[node name="ForestBlock0" parent="." instance=ExtResource("3_lteqw")]
+z_index = -2
+position = Vector2(564, 298)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+position = Vector2(574, 275)
+zoom = Vector2(2.82, 2.82)
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport2"]
+position = Vector2(348, 270)
+
+[node name="Camera2D2" type="Camera2D" parent="SubViewport2"]

@@ -24,6 +24,10 @@ func _physics_process(delta):
 	direction.y = Input.get_axis(arrayInput[2],arrayInput[3])
 	velocity = speed * direction
 	
+	if direction.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	if direction.x > 0:
+		$AnimatedSprite2D.flip_h = false
 	
 	
 	move_and_slide()

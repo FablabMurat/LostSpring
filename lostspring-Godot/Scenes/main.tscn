@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c27ta3g77kwvm"]
+[gd_scene load_steps=4 format=3 uid="uid://c27ta3g77kwvm"]
 
 [ext_resource type="PackedScene" uid="uid://bjy7a3o41ejpt" path="res://Scenes/level_1.tscn" id="2_iypa6"]
+[ext_resource type="AudioStream" uid="uid://dbxignpwb7oo5" path="res://Assets/Sound/ambiant2.wav" id="3_4v0a1"]
 [ext_resource type="Script" path="res://Scripts/cameras.gd" id="4_xp2fc"]
 
 [node name="Node2D" type="Node2D"]
@@ -41,3 +42,7 @@ scale = Vector2(3, 3)
 [node name="Level" parent="HBoxContainer/SubViewportContainer/Viewport1" instance=ExtResource("2_iypa6")]
 texture_filter = 1
 position = Vector2(-181, -145)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4v0a1")
+autoplay = true

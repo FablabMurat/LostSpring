@@ -1,51 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjy7a3o41ejpt"]
+[gd_scene load_steps=8 format=3 uid="uid://bjy7a3o41ejpt"]
 
 [ext_resource type="PackedScene" uid="uid://cdi2waamsj162" path="res://Scenes/player.tscn" id="1_dehm5"]
+[ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain.tscn" id="2_vdejq"]
 [ext_resource type="PackedScene" uid="uid://2s28rkfwb4ws" path="res://Scenes/flowerHodler.tscn" id="3_1edhd"]
 [ext_resource type="PackedScene" uid="uid://cl1st5spssy60" path="res://Scenes/flower.tscn" id="4_44ya4"]
 [ext_resource type="PackedScene" uid="uid://d0p8wy6x5sx7p" path="res://Scenes/door.tscn" id="5_rldx3"]
-[ext_resource type="PackedScene" uid="uid://bp1ndvjst2xnj" path="res://Scenes/monster.tscn" id="7_8u10c"]
-[ext_resource type="PackedScene" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
+[ext_resource type="PackedScene" uid="uid://c1rt24fc8ks8g" path="res://Scenes/monster.tscn" id="7_8u10c"]
 [ext_resource type="Script" path="res://Scenes/flower.gd" id="7_igdww"]
-[ext_resource type="Script" path="res://Scenes/door.gd" id="8_fb3g8"]
 
 [node name="Level1" type="Node2D"]
 
 [node name="Player1" parent="." instance=ExtResource("1_dehm5")]
-position = Vector2(480, 88)
+position = Vector2(147, 274)
 speed = 45
 
 [node name="Player2" parent="." instance=ExtResource("1_dehm5")]
 position = Vector2(261, 270)
 speed = 45
 
+[node name="Terrain" parent="." instance=ExtResource("2_vdejq")]
+
 [node name="flowerHolder" parent="." instance=ExtResource("3_1edhd")]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("5_rldx3")]
 
 [node name="Monster" parent="." instance=ExtResource("7_8u10c")]
 position = Vector2(262, 243)
 
 [node name="FlowerYellow" parent="." instance=ExtResource("4_44ya4")]
-position = Vector2(472, 144)
+position = Vector2(301, 267)
 script = ExtResource("7_igdww")
 
 [node name="FlowerBlue" parent="." instance=ExtResource("4_44ya4")]
-position = Vector2(310, 251)
+position = Vector2(313, 254)
 script = ExtResource("7_igdww")
-
-[node name="FlowerGreen" parent="." instance=ExtResource("4_44ya4")]
-position = Vector2(323, 267)
-script = ExtResource("7_igdww")
-
-[node name="FlowerRed" parent="." instance=ExtResource("4_44ya4")]
-position = Vector2(326, 253)
-script = ExtResource("7_igdww")
-
-[node name="Terrain2" parent="." instance=ExtResource("7_a2lme")]
-z_index = -2
-position = Vector2(544, 2496)
-
-[node name="DoorYellow" parent="." instance=ExtResource("5_rldx3")]
-script = ExtResource("8_fb3g8")
 
 [connection signal="body_entered" from="flowerHolder" to="Player1" method="_on_flower_holder_body_entered"]
 [connection signal="body_entered" from="Monster" to="Player1" method="_on_monster_body_entered"]
@@ -53,7 +41,3 @@ script = ExtResource("8_fb3g8")
 [connection signal="body_entered" from="FlowerYellow" to="FlowerYellow" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerBlue" to="Player1" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerBlue" to="FlowerBlue" method="_on_body_entered"]
-[connection signal="_entered" from="FlowerGreen" to="Player1" method="_on_flower_yellow__entered"]
-[connection signal="body_entered" from="FlowerGreen" to="FlowerGreen" method="_on_body_entered"]
-[connection signal="_entered" from="FlowerRed" to="Player1" method="_on_flower_yellow__entered"]
-[connection signal="body_entered" from="FlowerRed" to="FlowerRed" method="_on_body_entered"]

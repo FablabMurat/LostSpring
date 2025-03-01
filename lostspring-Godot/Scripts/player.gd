@@ -57,6 +57,7 @@ func _on_flower_yellow__entered(flowerName: Variant) -> void:
 	var colorName = flowerName.name.substr(6,-1)
 	grabbedFlowerColor = colorName
 	print("grabbed flower color is " + colorName) 
+	flowerName.visible = false
 
 func _on_flower_holder__entered(holderName: Variant) -> void:
 	var holderPath = holderName.get_path()
@@ -70,6 +71,7 @@ func _on_flower_holder__entered(holderName: Variant) -> void:
 		currentDoor.set_collision_layer_value(1,0)
 		var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
 		currentDoorSprite.play()
+		grabbedFlowerColor = "none"
 
 
 

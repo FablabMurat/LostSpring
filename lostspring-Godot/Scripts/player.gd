@@ -4,9 +4,7 @@ extends CharacterBody2D
 @export var speed = 200
 var arrayInput = ["left","right","top","bottom"]
 @onready var playerSprite = $AnimatedSprite2D
-
 var flowerArray = []
-
 func _ready():
 	var screen_size = get_viewport_rect().size
 	print(name)
@@ -14,16 +12,15 @@ func _ready():
 	for i in arrayInput.size():
 		var num_str: String = name
 		var num: int = num_str.right(num_str.length()-9).to_int()
-		print(num)
 		arrayInput[i] = arrayInput[i] + str(num)
-		print(arrayInput[i])
 	var grid_width = 2
 	var flowerNumber = 5
 	for i in grid_width:
 		flowerArray.append([])
 		for j in flowerNumber:
 			flowerArray[i].append(0) # Set a starter value for each position
-		
+			print("entrée fleurs" + str(flowerArray[i][j]))
+			
 func _physics_process(delta):
 	
 	var direction = Vector2(0,0)
@@ -54,14 +51,14 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func _on_flower_body_entered(body: Node2D) -> void:
-	print("body enter" + body.name)
-	#substr(6,-1)
-	flowerArray[1][1] = "yellow"
-	$"../FlowerYellow/flowerSprite".play()
 
 
-func _on_flower_holder_body_entered(body: Node2D) -> void:
-	if flowerArray[1] == "yellow":
-		$"../StaticBody2D".set_collision_layer_value(1,false)
-		print("porte ouverte") 
+
+func _on_flower_yellow__entered(flowerName: Variant) -> void:
+	var flowerPath = flowerName.get_path()
+	var animatedFlower = get_node(str(flowerPath) + "/flowerSprite")
+	prints(str(flowerPath) + "/flowerSprite")
+	animatedFlower.play()
+	var colorName = flowerName.name.substr(6,-1)
+	
+	

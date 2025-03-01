@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjy7a3o41ejpt"]
+
+[ext_resource type="PackedScene" uid="uid://cdi2waamsj162" path="res://Scenes/player.tscn" id="1_dehm5"]
+[ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain.tscn" id="2_vdejq"]
+[ext_resource type="PackedScene" uid="uid://2s28rkfwb4ws" path="res://Scenes/flowerHodler.tscn" id="3_1edhd"]
+[ext_resource type="PackedScene" uid="uid://cl1st5spssy60" path="res://Scenes/flower.tscn" id="4_44ya4"]
+[ext_resource type="Script" path="res://Scenes/flower_yellow.gd" id="5_d4u6n"]
+[ext_resource type="PackedScene" uid="uid://d0p8wy6x5sx7p" path="res://Scenes/door.tscn" id="5_rldx3"]
+[ext_resource type="PackedScene" uid="uid://c1rt24fc8ks8g" path="res://Scenes/monster.tscn" id="7_8u10c"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Player1" parent="." instance=ExtResource("1_dehm5")]
+position = Vector2(147, 274)
+speed = 45
+
+[node name="Player2" parent="." instance=ExtResource("1_dehm5")]
+position = Vector2(261, 270)
+speed = 45
+
+[node name="Terrain" parent="." instance=ExtResource("2_vdejq")]
+
+[node name="flowerHolder" parent="." instance=ExtResource("3_1edhd")]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("5_rldx3")]
+
+[node name="FlowerBlue" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
+position = Vector2(14, -17)
+script = ExtResource("5_d4u6n")
+
+[node name="FlowerYellow" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
+position = Vector2(-7, -7)
+script = ExtResource("5_d4u6n")
+
+[node name="Monster" parent="." instance=ExtResource("7_8u10c")]
+position = Vector2(262, 243)
+
+[connection signal="body_entered" from="flowerHolder" to="Player1" method="_on_flower_holder_body_entered"]
+[connection signal="_entered" from="FlowerBlue" to="Player1" method="_entered"]
+[connection signal="body_entered" from="FlowerBlue" to="Player1" method="_on_flower_yellow_body_entered" binds= ["test"]]
+[connection signal="_entered" from="FlowerYellow" to="Player1" method="_entered"]
+[connection signal="body_entered" from="Monster" to="Player1" method="_on_monster_body_entered"]

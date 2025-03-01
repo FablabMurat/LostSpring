@@ -1,19 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://cdi2waamsj162"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qk7fi"]
-[ext_resource type="Texture2D" uid="uid://cjhsm3rmlrx4b" path="res://icon.svg" id="2_ib3mu"]
+[ext_resource type="SpriteFrames" uid="uid://bwx25aajyunh5" path="res://Assets/Sprites/PlayerAnimation.tres" id="2_7ahdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4w0gd"]
-size = Vector2(127, 127)
+size = Vector2(6, 8)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_qk7fi")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ib3mu")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_4w0gd")
 
 [node name="Player" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_7ahdy")
+animation = &"idleFace"
+autoplay = "walk"

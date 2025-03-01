@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl1st5spssy60"]
+
+[ext_resource type="SpriteFrames" uid="uid://5pxahgas50td" path="res://Assets/Sprites/Flower.tres" id="1_golux"]
+[ext_resource type="Script" path="res://Scenes/signalEmitting.gd" id="1_j0qbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wac8k"]
+size = Vector2(7, 7)
+
+[node name="Flower" type="Area2D"]
+script = ExtResource("1_j0qbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(298.5, 274.5)
+shape = SubResource("RectangleShape2D_wac8k")
+
+[node name="flowerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(299, 274)
+sprite_frames = ExtResource("1_golux")
+animation = &"pickUp"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

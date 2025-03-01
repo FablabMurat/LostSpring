@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmsbukicybiou"]
 
-[ext_resource type="PackedScene" uid="uid://cp7l8wc1wb2ek" path="res://Scenes/forestBlock0UpRightDownLeft.tscn" id="1_u2nms"]
+[ext_resource type="PackedScene" uid="uid://cp7l8wc1wb2ek" path="res://Scenes/Blocks/forestBlock0UpRightDownLeft.tscn" id="1_u2nms"]
 [ext_resource type="Texture2D" uid="uid://b23e44l7uy5rj" path="res://Assets/TileSet/level1.png" id="2_6ikhd"]
 
 [node name="Terrain" type="Node2D"]

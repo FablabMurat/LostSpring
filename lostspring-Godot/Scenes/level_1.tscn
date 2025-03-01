@@ -20,9 +20,9 @@ speed = 45
 
 [node name="flowerHolder" parent="." instance=ExtResource("3_1edhd")]
 
-[node name="Flower" parent="." instance=ExtResource("4_44ya4")]
+[node name="FlowerYellow" parent="." instance=ExtResource("4_44ya4")]
 
 [node name="StaticBody2D" parent="." instance=ExtResource("5_rldx3")]
 
 [connection signal="body_entered" from="flowerHolder" to="Player1" method="_on_flower_holder_body_entered"]
-[connection signal="body_entered" from="Flower" to="Player1" method="_on_flower_body_entered"]
+[connection signal="body_entered" from="FlowerYellow" to="Player1" method="_on_flower_body_entered"]

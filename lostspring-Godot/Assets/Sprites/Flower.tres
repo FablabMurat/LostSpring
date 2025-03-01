@@ -68,7 +68,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fdbyn")
 }],
-"loop": false,
+"loop": true,
 "name": &"pickUp",
-"speed": 5.0
+"speed": 15.0
 }]

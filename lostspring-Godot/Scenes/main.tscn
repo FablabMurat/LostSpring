@@ -5,7 +5,10 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("2_xgq1v")]
+[node name="Player2" parent="." instance=ExtResource("2_xgq1v")]
+position = Vector2(574, 275)
+
+[node name="Player1" parent="." instance=ExtResource("2_xgq1v")]
 position = Vector2(348, 270)
 
 [node name="Terrain" parent="." instance=ExtResource("2_g4gq2")]

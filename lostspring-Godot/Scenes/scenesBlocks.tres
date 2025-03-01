@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://d1hgvmfed6dmn"]
+[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://d1hgvmfed6dmn"]
 
 [ext_resource type="PackedScene" uid="uid://5dafj3t78i8g" path="res://Scenes/Blocks/forestBlock8RightLeft.tscn" id="2_71by2"]
 [ext_resource type="PackedScene" uid="uid://cec8t5loojf2t" path="res://Scenes/Blocks/forestBlock9RightDown.tscn" id="3_31heh"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dhbbnkd12wny1" path="res://Scenes/Blocks/forestBlock19RightItem.tscn" id="15_3am61"]
 [ext_resource type="PackedScene" uid="uid://bjlnwg1xp0lg1" path="res://Scenes/Blocks/forestBlock6UpDown.tscn" id="15_lpds1"]
 [ext_resource type="PackedScene" uid="uid://hk4foowok8nn" path="res://Scenes/Blocks/forestBlock7UpDownLeft.tscn" id="16_alskn"]
+[ext_resource type="PackedScene" path="res://Scenes/Blocks/forestBlock20final.tscn" id="16_mc4ke"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_13chk"]
 scenes/1/scene = ExtResource("9_pvdha")
@@ -47,6 +48,7 @@ scenes/20/scene = ExtResource("12_xac8k")
 scenes/21/scene = ExtResource("13_imp2m")
 scenes/22/scene = ExtResource("14_ww8ap")
 scenes/23/scene = ExtResource("15_3am61")
+scenes/24/scene = ExtResource("16_mc4ke")
 
 [resource]
 tile_size = Vector2i(176, 176)

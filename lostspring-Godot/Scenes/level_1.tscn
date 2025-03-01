@@ -75,7 +75,7 @@ script = ExtResource("7_igdww")
 position = Vector2(816, 3624)
 script = ExtResource("7_igdww")
 
-[node name="Terrain2" parent="." instance=ExtResource("7_a2lme")]
+[node name="Terrain1" parent="." instance=ExtResource("7_a2lme")]
 z_index = -2
 texture_filter = 1
 position = Vector2(544, 2496)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=4 uid="uid://dmsbukicybiou"]
+[gd_scene load_steps=3 format=4 uid="uid://bj0ldcjsx08g4"]
 
 [ext_resource type="Texture2D" uid="uid://b5lcdt5q618b6" path="res://Scenes/level1.svg" id="2_dlm88"]
-[ext_resource type="TileSet" uid="uid://d1hgvmfed6dmn" path="res://Scenes/scenesBlocks.tres" id="2_saec4"]
+[ext_resource type="TileSet" uid="uid://b5bwtpr3edyje" path="res://Scenes/scenesBlocks.tres" id="2_saec4"]
 
 [node name="Terrain" type="Node2D"]
 

@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjy7a3o41ejpt"]
+[gd_scene load_steps=10 format=3 uid="uid://bjy7a3o41ejpt"]
 
 [ext_resource type="PackedScene" uid="uid://cdi2waamsj162" path="res://Scenes/player.tscn" id="1_dehm5"]
 [ext_resource type="PackedScene" uid="uid://2s28rkfwb4ws" path="res://Scenes/flowerHodler.tscn" id="3_1edhd"]
 [ext_resource type="Script" path="res://Scenes/flower_hodler.gd" id="3_q37o3"]
 [ext_resource type="PackedScene" uid="uid://cl1st5spssy60" path="res://Scenes/flower.tscn" id="4_44ya4"]
-[ext_resource type="Script" path="res://Scenes/monster.gd" id="5_0fg1x"]
 [ext_resource type="PackedScene" uid="uid://d0p8wy6x5sx7p" path="res://Scenes/door.tscn" id="5_rldx3"]
 [ext_resource type="PackedScene" uid="uid://bp1ndvjst2xnj" path="res://Scenes/monster.tscn" id="7_8u10c"]
-[ext_resource type="PackedScene" uid="uid://bj0ldcjsx08g4" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
+[ext_resource type="PackedScene" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
 [ext_resource type="Script" path="res://Scenes/flower.gd" id="7_igdww"]
 [ext_resource type="Script" path="res://Scenes/door.gd" id="8_fb3g8"]
 
@@ -15,8 +14,7 @@
 
 [node name="Player1" parent="." instance=ExtResource("1_dehm5")]
 position = Vector2(480, 88)
-collision_layer = 3
-speed = 100
+speed = 45
 
 [node name="Player2" parent="." instance=ExtResource("1_dehm5")]
 position = Vector2(261, 270)
@@ -26,14 +24,8 @@ speed = 45
 position = Vector2(448, 96)
 script = ExtResource("3_q37o3")
 
-[node name="flowerHolderGreen" parent="." instance=ExtResource("3_1edhd")]
-position = Vector2(456, 296)
-script = ExtResource("3_q37o3")
-
 [node name="Monster" parent="." instance=ExtResource("7_8u10c")]
-z_index = 1
-position = Vector2(504, 120)
-script = ExtResource("5_0fg1x")
+position = Vector2(262, 243)
 
 [node name="FlowerYellow" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
 position = Vector2(472, 144)
@@ -44,7 +36,11 @@ position = Vector2(310, 251)
 script = ExtResource("7_igdww")
 
 [node name="FlowerGreen" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
-position = Vector2(464, 344)
+position = Vector2(323, 267)
+script = ExtResource("7_igdww")
+
+[node name="FlowerRed" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
+position = Vector2(528, 392)
 script = ExtResource("7_igdww")
 
 [node name="Terrain2" parent="." instance=ExtResource("7_a2lme")]
@@ -54,19 +50,13 @@ position = Vector2(544, 2496)
 [node name="DoorYellow" parent="." instance=ExtResource("5_rldx3")]
 script = ExtResource("8_fb3g8")
 
-[node name="DoorGreen" parent="." instance=ExtResource("5_rldx3")]
-position = Vector2(416, 400)
-script = ExtResource("8_fb3g8")
-
-[connection signal="_entered" from="flowerHolderYellow" to="Player1" method="_on_flower_holder__entered"]
-[connection signal="body_entered" from="flowerHolderYellow" to="flowerHolderYellow" method="_on_body_entered"]
-[connection signal="_entered" from="flowerHolderGreen" to="Player1" method="_on_flower_holder__entered"]
-[connection signal="body_entered" from="flowerHolderGreen" to="flowerHolderGreen" method="_on_body_entered"]
-[connection signal="_entered" from="Monster" to="Player1" method="_on_monster__entered"]
-[connection signal="body_entered" from="Monster" to="Monster" method="_on_body_entered"]
+[connection signal="body_entered" from="flowerHolderYellow" to="Player1" method="_on_flower_holder_body_entered"]
+[connection signal="body_entered" from="Monster" to="Player1" method="_on_monster_body_entered"]
 [connection signal="_entered" from="FlowerYellow" to="Player1" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerYellow" to="FlowerYellow" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerBlue" to="Player1" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerBlue" to="FlowerBlue" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerGreen" to="Player1" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerGreen" to="FlowerGreen" method="_on_body_entered"]
+[connection signal="_entered" from="FlowerRed" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="body_entered" from="FlowerRed" to="FlowerRed" method="_on_body_entered"]

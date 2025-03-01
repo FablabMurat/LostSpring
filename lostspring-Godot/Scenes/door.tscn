@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0p8wy6x5sx7p"]
+[gd_scene load_steps=5 format=3 uid="uid://d0p8wy6x5sx7p"]
 
 [ext_resource type="SpriteFrames" uid="uid://bjxidhyxj1j5m" path="res://Assets/Sprites/Animations/Door.tres" id="2_o53a0"]
 [ext_resource type="Texture2D" uid="uid://cm0swhm01ivls" path="res://Assets/Sprites/door_background.png" id="3_27abe"]
@@ -6,10 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nffrr"]
 size = Vector2(96, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_re3eb"]
+size = Vector2(32, 32)
+
 [node name="PorteYellow" type="StaticBody2D"]
 position = Vector2(416, 168)
+collision_layer = 3
 
 [node name="doorSprite" type="AnimatedSprite2D" parent="."]
+z_index = 3
 position = Vector2(56, 16)
 sprite_frames = ExtResource("2_o53a0")
 animation = &"opening"
@@ -21,3 +26,16 @@ texture = ExtResource("3_27abe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(56, 16)
 shape = SubResource("RectangleShape2D_nffrr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_re3eb")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(48, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_re3eb")

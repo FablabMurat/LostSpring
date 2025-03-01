@@ -1,17 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bp1ndvjst2xnj"]
 
-[ext_resource type="SpriteFrames" path="res://Assets/Sprites/Monster.tres" id="1_0tg7i"]
+[ext_resource type="SpriteFrames" uid="uid://dkpoi0ptqxpx" path="res://Assets/Sprites/Monster.tres" id="1_0tg7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6so1k"]
 size = Vector2(30, 30)
 
-[node name="Area2D" type="Area2D"]
+[node name="monster" type="Area2D"]
 
-[node name="Monster" type="AnimatedSprite2D" parent="."]
+[node name="monsterSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = ExtResource("1_0tg7i")
-animation = &"Idle"
-autoplay = "Idle"
+animation = &"PopUp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6so1k")
-disabled = true

@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://mnr7tx5cus32"]
+
+[ext_resource type="Texture2D" uid="uid://bqbx0p16mr34x" path="res://Assets/Sprites/flower_place24x24.png" id="1_436ih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc3pk"]
+atlas = ExtResource("1_436ih")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m64kv"]
+atlas = ExtResource("1_436ih")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eif3"]
+atlas = ExtResource("1_436ih")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ychxn"]
+atlas = ExtResource("1_436ih")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuk6e"]
+atlas = ExtResource("1_436ih")
+region = Rect2(96, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc3pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m64kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ychxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuk6e")
+}],
+"loop": false,
+"name": &"popUp",
+"speed": 5.0
+}]

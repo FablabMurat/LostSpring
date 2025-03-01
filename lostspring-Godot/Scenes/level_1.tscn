@@ -1,15 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjy7a3o41ejpt"]
+[gd_scene load_steps=6 format=3 uid="uid://bjy7a3o41ejpt"]
 
 [ext_resource type="PackedScene" uid="uid://cdi2waamsj162" path="res://Scenes/player.tscn" id="1_dehm5"]
 [ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain.tscn" id="2_vdejq"]
-[ext_resource type="Texture2D" uid="uid://ya744chm0mmk" path="res://Assets/TileSet/tileset_1bit_0.png" id="3_gte5b"]
-[ext_resource type="SpriteFrames" uid="uid://5pxahgas50td" path="res://Assets/Sprites/Flower.tres" id="5_4o8sh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wac8k"]
-size = Vector2(7, 7)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_as6cp"]
-size = Vector2(17, 36)
+[ext_resource type="PackedScene" uid="uid://2s28rkfwb4ws" path="res://Scenes/flowerHodler.tscn" id="3_1edhd"]
+[ext_resource type="PackedScene" uid="uid://cl1st5spssy60" path="res://Scenes/flower.tscn" id="4_44ya4"]
+[ext_resource type="PackedScene" uid="uid://d0p8wy6x5sx7p" path="res://Scenes/door.tscn" id="5_rldx3"]
 
 [node name="Level1" type="Node2D"]
 
@@ -23,33 +18,11 @@ speed = 45
 
 [node name="Terrain" parent="." instance=ExtResource("2_vdejq")]
 
-[node name="Flower" type="Area2D" parent="."]
+[node name="flowerHolder" parent="." instance=ExtResource("3_1edhd")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower"]
-position = Vector2(298.5, 274.5)
-shape = SubResource("RectangleShape2D_wac8k")
+[node name="Flower" parent="." instance=ExtResource("4_44ya4")]
 
-[node name="flowerSprite" type="AnimatedSprite2D" parent="Flower"]
-position = Vector2(299, 274)
-sprite_frames = ExtResource("5_4o8sh")
-animation = &"pickUp"
+[node name="StaticBody2D" parent="." instance=ExtResource("5_rldx3")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Tileset1Bit0" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(350, 269)
-scale = Vector2(0.132813, 0.289063)
-texture = ExtResource("3_gte5b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(350.5, 269)
-shape = SubResource("RectangleShape2D_as6cp")
-
-[node name="Area2D" type="Area2D" parent="StaticBody2D"]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
-position = Vector2(347, 269)
-shape = SubResource("RectangleShape2D_as6cp")
-
-[connection signal="body_entered" from="Flower" to="Player1" method="_on_static_body_2d_body_entered"]
-[connection signal="body_entered" from="StaticBody2D/Area2D" to="Player1" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="flowerHolder" to="Player1" method="_on_flower_holder_body_entered"]
+[connection signal="body_entered" from="Flower" to="Player1" method="_on_flower_body_entered"]

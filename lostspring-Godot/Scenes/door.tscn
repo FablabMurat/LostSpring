@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0p8wy6x5sx7p"]
+
+[ext_resource type="Texture2D" uid="uid://ya744chm0mmk" path="res://Assets/TileSet/tileset_1bit_0.png" id="1_sb3n7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as6cp"]
+size = Vector2(17, 36)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Tileset1Bit0" type="Sprite2D" parent="."]
+position = Vector2(350, 269)
+scale = Vector2(0.132813, 0.289063)
+texture = ExtResource("1_sb3n7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(350.5, 269)
+shape = SubResource("RectangleShape2D_as6cp")

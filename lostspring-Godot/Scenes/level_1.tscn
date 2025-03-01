@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://2s28rkfwb4ws" path="res://Scenes/flowerHodler.tscn" id="3_1edhd"]
 [ext_resource type="PackedScene" uid="uid://cl1st5spssy60" path="res://Scenes/flower.tscn" id="4_44ya4"]
 [ext_resource type="PackedScene" uid="uid://d0p8wy6x5sx7p" path="res://Scenes/door.tscn" id="5_rldx3"]
-[ext_resource type="PackedScene" uid="uid://bp1ndvjst2xnj" path="res://Scenes/monster.tscn" id="7_8u10c"]
-[ext_resource type="PackedScene" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
+[ext_resource type="PackedScene" path="res://Scenes/monster.tscn" id="7_8u10c"]
+[ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
 [ext_resource type="Script" path="res://Scenes/flower.gd" id="7_igdww"]
 [ext_resource type="Script" path="res://Scenes/door.gd" id="8_fb3g8"]
 
@@ -33,7 +33,7 @@ position = Vector2(310, 251)
 script = ExtResource("7_igdww")
 
 [node name="FlowerGreen" parent="." instance=ExtResource("4_44ya4")]
-position = Vector2(323, 267)
+position = Vector2(158, 313)
 script = ExtResource("7_igdww")
 
 [node name="FlowerRed" parent="." instance=ExtResource("4_44ya4")]

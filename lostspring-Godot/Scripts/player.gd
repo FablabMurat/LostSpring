@@ -58,7 +58,6 @@ func _on_flower_yellow__entered(flowerName: Variant) -> void:
 	grabbedFlowerColor = colorName
 	print("grabbed flower color is " + colorName) 
 
-
 func _on_flower_holder__entered(holderName: Variant) -> void:
 	var holderPath = holderName.get_path()
 	var animatedHolder = get_node(str(holderPath) + "/flowerHolderSprite")
@@ -71,3 +70,13 @@ func _on_flower_holder__entered(holderName: Variant) -> void:
 		currentDoor.set_collision_layer_value(1,0)
 		var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
 		currentDoorSprite.play()
+
+
+
+
+func _on_monster__entered(monsterName: Variant) -> void:
+	var monsterPath = monsterName.get_path()
+	print("monster entered")
+	var animatedMonster = get_node(str(monsterPath) + "/monsterSprite")
+	animatedMonster.play()
+	 

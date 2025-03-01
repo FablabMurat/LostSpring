@@ -20,18 +20,22 @@ speed = 100
 
 [node name="Player2" parent="." instance=ExtResource("1_dehm5")]
 position = Vector2(472, 4688)
-speed = 45
+speed = 100
 
 [node name="flowerHolderYellow" parent="." instance=ExtResource("3_1edhd")]
 position = Vector2(448, 96)
 script = ExtResource("3_q37o3")
 
 [node name="flowerHolderGreen" parent="." instance=ExtResource("3_1edhd")]
-position = Vector2(456, 296)
+position = Vector2(456, 328)
 script = ExtResource("3_q37o3")
 
 [node name="flowerHolderCyan" parent="." instance=ExtResource("3_1edhd")]
 position = Vector2(456, 4688)
+script = ExtResource("3_q37o3")
+
+[node name="flowerHolderSky_Blue" parent="." instance=ExtResource("3_1edhd")]
+position = Vector2(456, 4424)
 script = ExtResource("3_q37o3")
 
 [node name="Monster" parent="." instance=ExtResource("7_8u10c")]
@@ -44,23 +48,36 @@ position = Vector2(472, 144)
 script = ExtResource("7_igdww")
 
 [node name="FlowerGreen" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
-position = Vector2(464, 344)
+position = Vector2(464, 256)
 script = ExtResource("7_igdww")
 
 [node name="FlowerCyan" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
 position = Vector2(448, 4664)
 script = ExtResource("7_igdww")
 
+[node name="FlowerSky_Blue" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
+position = Vector2(464, 4488)
+script = ExtResource("7_igdww")
+
 [node name="Terrain2" parent="." instance=ExtResource("7_a2lme")]
 z_index = -2
+texture_filter = 1
 position = Vector2(544, 2496)
 metadata/_edit_lock_ = true
 
 [node name="DoorYellow" parent="." instance=ExtResource("5_rldx3")]
 script = ExtResource("8_fb3g8")
 
+[node name="DoorSky_Blue" parent="." instance=ExtResource("5_rldx3")]
+position = Vector2(416, 400)
+script = ExtResource("8_fb3g8")
+
 [node name="DoorGreen" parent="." instance=ExtResource("5_rldx3")]
 position = Vector2(416, 4336)
+script = ExtResource("8_fb3g8")
+
+[node name="DoorGreen2" parent="." instance=ExtResource("5_rldx3")]
+position = Vector2(416, 3560)
 script = ExtResource("8_fb3g8")
 
 [node name="DoorCyan" parent="." instance=ExtResource("5_rldx3")]
@@ -73,6 +90,8 @@ script = ExtResource("8_fb3g8")
 [connection signal="body_entered" from="flowerHolderGreen" to="flowerHolderGreen" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderCyan" to="Player1" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderCyan" to="flowerHolderCyan" method="_on_body_entered"]
+[connection signal="_entered" from="flowerHolderSky_Blue" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="body_entered" from="flowerHolderSky_Blue" to="flowerHolderSky_Blue" method="_on_body_entered"]
 [connection signal="_entered" from="Monster" to="Player1" method="_on_monster__entered"]
 [connection signal="body_entered" from="Monster" to="Monster" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerYellow" to="Player1" method="_on_flower_yellow__entered"]
@@ -81,3 +100,5 @@ script = ExtResource("8_fb3g8")
 [connection signal="body_entered" from="FlowerGreen" to="FlowerGreen" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerCyan" to="Player1" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerCyan" to="FlowerCyan" method="_on_body_entered"]
+[connection signal="_entered" from="FlowerSky_Blue" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="body_entered" from="FlowerSky_Blue" to="FlowerSky_Blue" method="_on_body_entered"]

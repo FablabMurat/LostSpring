@@ -5,7 +5,7 @@ extends CharacterBody2D
 var arrayInput = ["left","right","top","bottom"]
 @onready var playerSprite = $AnimatedSprite2D
 
-var grabbedFlowerColor = "none";
+var grabbedFlowerColor = ["none","none"]
 func _ready():
 	var screen_size = get_viewport_rect().size
 	print(name)
@@ -49,34 +49,35 @@ func _physics_process(delta):
 
 
 
-func _on_flower_yellow__entered(flowerName: Variant) -> void:
+func _on_flower_yellow__entered(flowerName: Variant,body) -> void:
 	var flowerPath = flowerName.get_path()
 	var animatedFlower = get_node(str(flowerPath) + "/flowerSprite")
 	prints(str(flowerPath) + "/flowerSprite")
 	animatedFlower.play()
 	var colorName = flowerName.name.substr(6,-1)
-	grabbedFlowerColor = colorName
-	print("grabbed flower color is " + colorName) 
 	flowerName.visible = false
+	var playerNumber = int(body.name.substr(6,-1))
+	grabbedFlowerColor[playerNumber-1] = colorName
 
-func _on_flower_holder__entered(holderName: Variant) -> void:
+func _on_flower_holder__entered(holderName: Variant,body) -> void:
 	var holderPath = holderName.get_path()
 	var animatedHolder = get_node(str(holderPath) + "/flowerHolderSprite")
 	prints(str(holderPath) + "/flowerHolderSprite")
 	var colorName = holderName.name.substr(12,-1)
-	if colorName == grabbedFlowerColor:
+	var playerNumber = int(body.name.substr(6,-1))
+	if colorName == grabbedFlowerColor[playerNumber-1]:
 		animatedHolder.play()
 		print("door" + colorName + "open")
 		var currentDoor = get_node(str(holderPath)+"/../Door"+colorName)
 		currentDoor.set_collision_layer_value(1,0)
 		var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
 		currentDoorSprite.play()
-		grabbedFlowerColor = "none"
+		grabbedFlowerColor[playerNumber-1] = "colorName"
+		
 
 
 
-
-func _on_monster__entered(monsterName: Variant) -> void:
+func _on_monster__entered(monsterName: Variant,body) -> void:
 	var monsterPath = monsterName.get_path()
 	print("monster entered")
 	var animatedMonster = get_node(str(monsterPath) + "/monsterSprite")

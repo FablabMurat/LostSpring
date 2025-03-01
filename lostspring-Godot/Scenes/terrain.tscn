@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b23e44l7uy5rj" path="res://Assets/TileSet/level1.png" id="2_6ikhd"]
 
 [node name="Terrain" type="Node2D"]
+texture_filter = 1
 
 [node name="ForestBlock0" parent="." instance=ExtResource("1_u2nms")]
 position = Vector2(64, 112)

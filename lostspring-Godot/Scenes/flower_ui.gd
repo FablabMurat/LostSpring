@@ -28,4 +28,14 @@ func showMap(visibility,currentPlayer) -> void:
 
 
 func _on_timer_timeout() -> void:
+	$CinematiqueFin.visible = true
+	$CinematiqueFin.play()
+
+
+func _on_timer_cinematique_f_in_timeout() -> void:
+	pass # Replace with function body.
+
+
+func _on_cinematique_fin_animation_finished() -> void:
 	$CreditsScreen.visible = true
+	$CinematiqueFin.visible = false

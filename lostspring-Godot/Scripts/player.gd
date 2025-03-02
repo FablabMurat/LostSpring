@@ -54,10 +54,10 @@ func _physics_process(delta):
 	playerSprite.play()
 	if velocity != Vector2.ZERO && stepIsPlaying== false:
 		stepIsPlaying = true
-		audioPlayerNode.playAudio("step1")
+		audioPlayerNode.playAudio("step" + str(playerNumber))
 	if velocity == Vector2.ZERO && stepIsPlaying== true:
 		stepIsPlaying = false
-		audioPlayerNode.pauseAudio("step1")
+		audioPlayerNode.pauseAudio("step" + str(playerNumber))
 	move_and_slide()
 
 	if playerIsOnMonster && animatedMonster.animation == "Idle":
@@ -81,6 +81,7 @@ func _on_flower_yellow__entered(flowerName: Variant,body) -> void:
 		var colorName = flowerName.name.substr(6,-1)
 		flowerName.visible = false
 		grabbedFlowerColor[currentPlayerNumber-1] = colorName
+		audioPlayerNode.playAudio("flower")
 
 func _on_flower_holder__entered(holderName: Variant,body) -> void:
 	var currentPlayerNumber = int(body.name.substr(6,-1))
@@ -101,6 +102,7 @@ func _on_flower_holder__entered(holderName: Variant,body) -> void:
 			frameNumber = 1
 			rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
 			$"../TimerFrame".start()
+			audioPlayerNode.playAudio("holder")
 
 
 
@@ -141,6 +143,7 @@ func _on_timer_frame_timeout() -> void:
 	if frameNumber == 2:
 		frameNumber = 0
 		rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
+		audioPlayerNode.playAudio("doorOpen")
 	if frameNumber == 1:
 		frameNumber = 2
 		print("passage frame i a 2")

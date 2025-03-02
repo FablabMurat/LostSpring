@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://c27ta3g77kwvm"]
+[gd_scene load_steps=11 format=3 uid="uid://c27ta3g77kwvm"]
 
 [ext_resource type="PackedScene" uid="uid://bjy7a3o41ejpt" path="res://Scenes/level_1.tscn" id="2_iypa6"]
 [ext_resource type="Texture2D" uid="uid://mesgyjdimqc2" path="res://Assets/Sprites/LostSpring_SPRITE_MONSTER-IDDLE.png" id="4_jwi4m"]
 [ext_resource type="Texture2D" uid="uid://c80q1g71jmaq1" path="res://Assets/Sprites/playerFrame192x216.png" id="4_rs0r1"]
 [ext_resource type="Script" path="res://Scripts/cameras.gd" id="4_xp2fc"]
-[ext_resource type="AudioStream" uid="uid://dbxignpwb7oo5" path="res://Assets/Sound/ambiant2.wav" id="5_cyv7g"]
 [ext_resource type="Script" path="res://Scenes/audio_player.gd" id="5_xnvwj"]
+[ext_resource type="AudioStream" uid="uid://c4xg2hwq8l38j" path="res://Assets/Sound/pas_j2.wav" id="6_30u4l"]
 [ext_resource type="AudioStream" uid="uid://b4tb8hnag4wgl" path="res://Assets/Sound/pas_j1.wav" id="6_xq3go"]
+[ext_resource type="AudioStream" uid="uid://y3u6i5nxlpiw" path="res://Assets/Sound/action3.wav" id="8_wfwb0"]
+[ext_resource type="AudioStream" uid="uid://coh1f0hwqi0ob" path="res://Assets/Sound/action1.wav" id="8_xafv2"]
+[ext_resource type="AudioStream" uid="uid://bni8mxwj5lnqt" path="res://Assets/Sound/action4.wav" id="9_ow0d0"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("4_xp2fc")
@@ -69,9 +72,25 @@ texture = ExtResource("4_jwi4m")
 [node name="AudioPlayer" type="Node" parent="."]
 script = ExtResource("5_xnvwj")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioPlayer"]
-stream = ExtResource("5_cyv7g")
+[node name="step2" type="AudioStreamPlayer" parent="AudioPlayer"]
+stream = ExtResource("6_30u4l")
+volume_db = -11.055
 
 [node name="step1" type="AudioStreamPlayer" parent="AudioPlayer"]
 stream = ExtResource("6_xq3go")
-volume_db = -6.18
+volume_db = -11.91
+
+[node name="flower" type="AudioStreamPlayer" parent="AudioPlayer"]
+stream = ExtResource("8_wfwb0")
+
+[node name="holder" type="AudioStreamPlayer" parent="AudioPlayer"]
+stream = ExtResource("9_ow0d0")
+
+[node name="doorOpen" type="AudioStreamPlayer" parent="AudioPlayer"]
+stream = ExtResource("8_xafv2")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

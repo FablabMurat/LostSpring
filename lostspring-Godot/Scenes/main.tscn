@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c27ta3g77kwvm"]
+[gd_scene load_steps=26 format=3 uid="uid://c27ta3g77kwvm"]
 
 [ext_resource type="PackedScene" uid="uid://bjy7a3o41ejpt" path="res://Scenes/level_1.tscn" id="2_iypa6"]
 [ext_resource type="Texture2D" uid="uid://c80q1g71jmaq1" path="res://Assets/Sprites/playerFrame192x216.png" id="4_rs0r1"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://huwkvqpqvteb" path="res://Assets/Sprites/flowerUI.png" id="21_nvu8j"]
 [ext_resource type="Script" path="res://Scenes/flower_ui.gd" id="22_15wh0"]
 [ext_resource type="Texture2D" uid="uid://dr3perqr4npvt" path="res://Assets/Sprites/creditsScreen.png" id="23_nwxap"]
+[ext_resource type="SpriteFrames" uid="uid://dgwe8rylx24q4" path="res://Assets/Sprites/Animations/animationFin.tres" id="25_4l12d"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("4_xp2fc")
@@ -176,8 +177,17 @@ position = Vector2(212, 20)
 scale = Vector2(0.895833, 0.895833)
 texture = ExtResource("21_nvu8j")
 
+[node name="CinematiqueFin" type="AnimatedSprite2D" parent="UI"]
+visible = false
+position = Vector2(192, 108)
+sprite_frames = ExtResource("25_4l12d")
+
+[node name="TimerCinematiqueFIn" type="Timer" parent="UI/CinematiqueFin"]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]
 [connection signal="timeout" from="SombrePrintemps/TimerEcranTitre" to="AudioPlayer/Ambiance" method="_on_timer_ecran_titre_timeout"]
 [connection signal="timeout" from="SombrePrintemps/TimerEcranTitre" to="SombrePrintemps" method="_on_timer_ecran_titre_timeout"]
 [connection signal="timeout" from="UI/CreditsScreen/Timer" to="UI" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="UI/CinematiqueFin" to="UI" method="_on_cinematique_fin_animation_finished"]
+[connection signal="timeout" from="UI/CinematiqueFin/TimerCinematiqueFIn" to="UI" method="_on_timer_cinematique_f_in_timeout"]

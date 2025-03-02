@@ -12,7 +12,7 @@ var animatedMonster
 var playerDeadBlind = 10
 @onready var rootNode = get_node("/root/Node2D")
 @onready var audioPlayerNode = get_node("/root/Node2D/AudioPlayer")
-
+var stepIsPlaying = false
 var frameNumber = 0
 func _ready():
 	var screen_size = get_viewport_rect().size
@@ -52,9 +52,12 @@ func _physics_process(delta):
 	elif direction.y < 0:
 		playerSprite.animation = "runUp"
 	playerSprite.play()
-	if velocity != Vector2.ZERO:
-		audioPlayerNode.playAudio()
-
+	if velocity != Vector2.ZERO && stepIsPlaying== false:
+		stepIsPlaying = true
+		audioPlayerNode.playAudio("step1")
+	if velocity == Vector2.ZERO && stepIsPlaying== true:
+		stepIsPlaying = false
+		audioPlayerNode.pauseAudio("step1")
 	move_and_slide()
 
 	if playerIsOnMonster && animatedMonster.animation == "Idle":

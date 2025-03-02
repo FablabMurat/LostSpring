@@ -91,9 +91,11 @@ volume_db = -21.965
 
 [node name="flower" type="AudioStreamPlayer" parent="AudioPlayer"]
 stream = ExtResource("8_wfwb0")
+volume_db = -14.34
 
 [node name="holder" type="AudioStreamPlayer" parent="AudioPlayer"]
 stream = ExtResource("9_ow0d0")
+volume_db = -13.277
 
 [node name="doorOpen" type="AudioStreamPlayer" parent="AudioPlayer"]
 stream = ExtResource("8_xafv2")
@@ -108,7 +110,6 @@ script = ExtResource("13_30nrk")
 
 [node name="Start Music" type="AudioStreamPlayer" parent="AudioPlayer"]
 stream = ExtResource("13_sup8k")
-volume_db = -80.0
 autoplay = true
 
 [node name="EndMusic" type="AudioStreamPlayer" parent="AudioPlayer"]

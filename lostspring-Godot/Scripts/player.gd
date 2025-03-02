@@ -152,7 +152,7 @@ func _on_timer_frame_timeout() -> void:
 	if frameNumber == 2:
 		frameNumber = 0
 		rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
-		audioPlayerNode.playAudio("doorOpen")
+		# audioPlayerNode.playAudio("doorOpen")
 	if frameNumber == 1:
 		frameNumber = 2
 		print("passage frame i a 2")

@@ -6,7 +6,7 @@ var arrayInput = ["left","right","top","bottom"]
 @onready var playerSprite = $AnimatedSprite2D
 var grabbedFlowerColor = ["none","none"]
 @onready var playerNumber = int(self.name.substr(6,-1))
-@onready var respawnPosition = [Vector2.ZERO,Vector2.ZERO]
+@onready var respawnPosition = Vector2.ZERO
 var playerIsOnMonster = false
 var animatedMonster
 var playerDeadBlind = 10
@@ -20,8 +20,8 @@ func _ready():
 		var num: int = num_str.right(num_str.length()-9).to_int()
 		arrayInput[i] = arrayInput[i] + str(num)
 	
-	respawnPosition[playerNumber-1] = Vector2(self.position)
-			
+	respawnPosition = Vector2(self.position)
+	print("respawn point start " + "player" + str(playerNumber) +" " + str(respawnPosition))
 func _physics_process(delta):
 	
 	var direction = Vector2(0,0)
@@ -53,9 +53,12 @@ func _physics_process(delta):
 	move_and_slide()
 
 	if playerIsOnMonster && animatedMonster.animation == "Idle":
-		self.position = respawnPosition[playerNumber-1]
+		self.position = respawnPosition
 		playerDeath.emit(self,self.position)
 		$Timer.start()
+		animatedMonster.animation = "PopUp"
+		playerIsOnMonster = false
+
 
 	
 
@@ -84,23 +87,31 @@ func _on_flower_holder__entered(holderName: Variant,body) -> void:
 		var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
 		currentDoorSprite.play()
 		grabbedFlowerColor[playerNumber-1] = "colorName"
-		respawnPosition[playerNumber-1] = body.position
+		respawnPosition = body.position
 
 
 
 func _on_monster__entered(monsterName: Variant,body) -> void:
 	var monsterPath = monsterName.get_path()
-	playerIsOnMonster = true
-	print("monster entered")
-	animatedMonster = get_node(str(monsterPath) + "/monsterSprite")
-	animatedMonster.speed_scale = 1
-	animatedMonster.play()
-	print("player number" + self.name + str(respawnPosition[playerNumber -1]))
+	var currentPlayerNumber  = int(body.name.substr(6,-1))
+	if playerNumber == currentPlayerNumber:
+		playerIsOnMonster = true
+		print("monster entered by player " + str(currentPlayerNumber))
+		animatedMonster = get_node(str(monsterPath) + "/monsterSprite")
+	
+		if animatedMonster.is_playing() == false:
+			animatedMonster.animation = "PopUp"
+		animatedMonster.speed_scale = 1
+		animatedMonster.play()
+		print("player number" + body.name + str(respawnPosition))
 
 
 func _on_monster__exited(monsterName: Variant, body: Variant) -> void:
-	playerIsOnMonster = false
-
+	var currentPlayerNumber  = int(body.name.substr(6,-1))
+	if currentPlayerNumber == playerNumber:
+		playerIsOnMonster = false
+func chooseFrameText(int):
+	get_tree().
 
 func _on_timer_timeout() -> void:
 	if playerDeadBlind != 0:
@@ -109,4 +120,5 @@ func _on_timer_timeout() -> void:
 		self.visible = !self.visible
 	else:
 		playerDeadBlind = 10
+		
 		$Timer.stop()

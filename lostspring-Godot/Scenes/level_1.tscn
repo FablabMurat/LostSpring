@@ -25,6 +25,9 @@ wait_time = 0.2
 position = Vector2(472, 4688)
 speed = 100
 
+[node name="Timer" type="Timer" parent="Player2"]
+wait_time = 0.2
+
 [node name="flowerHolderYellow" parent="." instance=ExtResource("3_1edhd")]
 position = Vector2(448, 96)
 script = ExtResource("3_q37o3")
@@ -125,13 +128,26 @@ z_index = 1
 position = Vector2(432, 104)
 script = ExtResource("5_0fg1x")
 
+[node name="Monster2" parent="." instance=ExtResource("7_8u10c")]
+z_index = 1
+position = Vector2(504, 112)
+script = ExtResource("5_0fg1x")
+
+[node name="Monster3" parent="." instance=ExtResource("7_8u10c")]
+z_index = 1
+position = Vector2(472, 4624)
+script = ExtResource("5_0fg1x")
+
 [node name="Terrain1" parent="." instance=ExtResource("7_a2lme")]
 z_index = -2
 texture_filter = 1
 position = Vector2(544, 2496)
+metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="Player1/Timer" to="Player1" method="_on_timer_timeout"]
+[connection signal="timeout" from="Player2/Timer" to="Player2" method="_on_timer_timeout"]
 [connection signal="_entered" from="flowerHolderYellow" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="_entered" from="flowerHolderYellow" to="Player2" method="_on_flower_holder_yellow__entered"]
 [connection signal="body_entered" from="flowerHolderYellow" to="flowerHolderYellow" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerYellow" to="Player1" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerYellow" to="FlowerYellow" method="_on_body_entered"]
@@ -164,6 +180,20 @@ position = Vector2(544, 2496)
 [connection signal="_entered" from="flowerHolderSky_Blue" to="Player1" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderSky_Blue" to="flowerHolderSky_Blue" method="_on_body_entered"]
 [connection signal="_entered" from="Monster" to="Player1" method="_on_monster__entered"]
+[connection signal="_entered" from="Monster" to="Player2" method="_on_monster__entered"]
 [connection signal="_exited" from="Monster" to="Player1" method="_on_monster__exited"]
+[connection signal="_exited" from="Monster" to="Player2" method="_on_monster__exited"]
 [connection signal="body_entered" from="Monster" to="Monster" method="_on_body_entered"]
 [connection signal="body_exited" from="Monster" to="Monster" method="_on_body_exited"]
+[connection signal="_entered" from="Monster2" to="Player1" method="_on_monster__entered"]
+[connection signal="_entered" from="Monster2" to="Player2" method="_on_monster__entered"]
+[connection signal="_exited" from="Monster2" to="Player1" method="_on_monster__exited"]
+[connection signal="_exited" from="Monster2" to="Player2" method="_on_monster__exited"]
+[connection signal="body_entered" from="Monster2" to="Monster2" method="_on_body_entered"]
+[connection signal="body_exited" from="Monster2" to="Monster2" method="_on_body_exited"]
+[connection signal="_entered" from="Monster3" to="Player1" method="_on_monster__entered"]
+[connection signal="_entered" from="Monster3" to="Player2" method="_on_monster__entered"]
+[connection signal="_exited" from="Monster3" to="Player1" method="_on_monster__exited"]
+[connection signal="_exited" from="Monster3" to="Player2" method="_on_monster__exited"]
+[connection signal="body_entered" from="Monster3" to="Monster3" method="_on_body_entered"]
+[connection signal="body_exited" from="Monster3" to="Monster3" method="_on_body_exited"]

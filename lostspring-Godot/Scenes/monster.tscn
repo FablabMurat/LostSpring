@@ -18,7 +18,7 @@ script = ExtResource("2_y4q4n")
 shape = SubResource("RectangleShape2D_6so1k")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.89
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="monsterSprite" method="_on_timer_timeout"]

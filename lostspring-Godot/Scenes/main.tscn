@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c27ta3g77kwvm"]
+[gd_scene load_steps=25 format=3 uid="uid://c27ta3g77kwvm"]
 
 [ext_resource type="PackedScene" uid="uid://bjy7a3o41ejpt" path="res://Scenes/level_1.tscn" id="2_iypa6"]
 [ext_resource type="Texture2D" uid="uid://c80q1g71jmaq1" path="res://Assets/Sprites/playerFrame192x216.png" id="4_rs0r1"]
@@ -16,6 +16,7 @@
 [ext_resource type="VideoStream" path="res://Assets/Cinematique/Cinematique1Conversion_Cinematique1_Theora.ogv" id="13_7x3vy"]
 [ext_resource type="Script" path="res://Scenes/ambiance.gd" id="13_30nrk"]
 [ext_resource type="AudioStream" uid="uid://dhmu2ooh87ne0" path="res://Assets/Sound/cinematique labyrinthe.mp3" id="13_sup8k"]
+[ext_resource type="AudioStream" uid="uid://cxf6nejmyima6" path="res://Assets/Sound/ambiant4.wav" id="14_nklg0"]
 [ext_resource type="Script" path="res://Scenes/videoPlayer.gd" id="14_o1nfp"]
 [ext_resource type="Texture2D" uid="uid://f27lg20ifofk" path="res://Assets/Sprites/sombrePrintemps.png" id="15_ba3ro"]
 [ext_resource type="Script" path="res://Scenes/EcranTitre.gd" id="16_npe7d"]
@@ -106,7 +107,11 @@ script = ExtResource("13_30nrk")
 
 [node name="Start Music" type="AudioStreamPlayer" parent="AudioPlayer"]
 stream = ExtResource("13_sup8k")
+volume_db = -80.0
 autoplay = true
+
+[node name="EndMusic" type="AudioStreamPlayer" parent="AudioPlayer"]
+stream = ExtResource("14_nklg0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -117,6 +122,7 @@ autoplay = "default"
 script = ExtResource("12_tcg85")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
 offset_right = 1600.0
 offset_bottom = 912.0
 scale = Vector2(0.24, 0.24)
@@ -155,6 +161,9 @@ visible = false
 position = Vector2(192, 108)
 texture = ExtResource("23_nwxap")
 
+[node name="Timer" type="Timer" parent="UI/CreditsScreen"]
+wait_time = 5.0
+
 [node name="FlowerUI1" type="Sprite2D" parent="UI"]
 visible = false
 position = Vector2(20, 20)
@@ -171,3 +180,4 @@ texture = ExtResource("21_nvu8j")
 [connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]
 [connection signal="timeout" from="SombrePrintemps/TimerEcranTitre" to="AudioPlayer/Ambiance" method="_on_timer_ecran_titre_timeout"]
 [connection signal="timeout" from="SombrePrintemps/TimerEcranTitre" to="SombrePrintemps" method="_on_timer_ecran_titre_timeout"]
+[connection signal="timeout" from="UI/CreditsScreen/Timer" to="UI" method="_on_timer_timeout"]

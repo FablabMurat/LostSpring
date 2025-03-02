@@ -1,7 +1,7 @@
 extends Node
 
 func flowerColorUI(colorName,playerNumber) -> void:
-	var uiNode = get_node("/root/Node2D/FlowerUI/FlowerUI" + playerNumber)
+	var uiNode = get_node("/root/Node2D/FlowerUI/FlowerUI" + str(playerNumber))
 	uiNode.modulate = Color(colorName)
 	if colorName == "none":
 		uiNode.visible = false

@@ -12,7 +12,7 @@ var animatedMonster
 var playerDeadBlind = 10
 @onready var rootNode = get_node("/root/Node2D")
 @onready var audioPlayerNode = get_node("/root/Node2D/AudioPlayer")
-@onready var flowerUINode = get_node("/root/Node2D/AudioPlayer")
+@onready var flowerUINode = get_node("/root/Node2D/FlowerUI")
 var stepIsPlaying = false
 var frameNumber = 0
 var playerInEnd = [false,false]
@@ -85,14 +85,18 @@ func _physics_process(delta):
 
 func _on_flower_yellow__entered(flowerName: Variant,body) -> void:
 	var currentPlayerNumber = int(body.name.substr(6,-1))
-	if playerNumber == currentPlayerNumber:
-		var flowerPath = flowerName.get_path()
-		var animatedFlower = get_node(str(flowerPath) + "/flowerSprite")
+	var flowerPath = flowerName.get_path()
+	var animatedFlower = get_node(str(flowerPath) + "/flowerSprite")
+	var colorName = flowerName.name.substr(6,-1)
+	var currentDoor = get_node(str(flowerPath)+"/../Door"+colorName)
+	var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
+	
+	if playerNumber == currentPlayerNumber && currentDoorSprite.frame == 0 && colorName != grabbedFlowerColor[currentPlayerNumber -1]:
 		prints(str(flowerPath) + "/flowerSprite")
 		animatedFlower.play()
-		var colorName = flowerName.name.substr(6,-1)
-		flowerName.visible = false
+		#flowerName.visible = false
 		grabbedFlowerColor[currentPlayerNumber-1] = colorName
+		flowerUINode.flowerColorUI(colorName,currentPlayerNumber)
 		audioPlayerNode.playAudio("flower")
 
 func _on_flower_holder__entered(holderName: Variant,body) -> void:
@@ -110,6 +114,7 @@ func _on_flower_holder__entered(holderName: Variant,body) -> void:
 			var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
 			currentDoorSprite.play()
 			grabbedFlowerColor[currentPlayerNumber-1] = "none"
+			flowerUINode.flowerColorUI("none",currentPlayerNumber)
 			respawnPosition = body.position
 			frameNumber = 1
 			rootNode.chooseFrameText(frameNumber,currentPlayerNumber)

@@ -11,7 +11,8 @@ extends Node2D
 		player = $HBoxContainer/SubViewportContainer/Viewport1/Level/Player1
 	}
 }
-
+var frame = 0
+var playerNumber = 0
 func _ready() -> void:
 	# The world_2d object of the viewport contains information about what to
 	# render. Here, it's our game level. We need to pass it from the first to
@@ -23,3 +24,15 @@ func _ready() -> void:
 		var remote_transform := RemoteTransform2D.new()
 		remote_transform.remote_path = node.camera.get_path()
 		node.player.add_child(remote_transform)
+
+func chooseFrameText(newframe,currentPlayer):
+	frame = newframe
+	playerNumber = currentPlayer
+	print("image numero " + str(newframe) + " by player : " + str(playerNumber))
+	if currentPlayer == 1:
+		$PlayerFrame192x217.frame = frame
+	if currentPlayer == 2:
+		$PlayerFrame192x216.frame = frame
+
+func showMap(visibility,currentPlayer):
+	$Map1.visible = visibility

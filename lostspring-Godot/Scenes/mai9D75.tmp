@@ -1,12 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c27ta3g77kwvm"]
+[gd_scene load_steps=4 format=3 uid="uid://c27ta3g77kwvm"]
 
 [ext_resource type="PackedScene" uid="uid://bjy7a3o41ejpt" path="res://Scenes/level_1.tscn" id="2_iypa6"]
-[ext_resource type="Texture2D" uid="uid://mesgyjdimqc2" path="res://Assets/Sprites/LostSpring_SPRITE_MONSTER-IDDLE.png" id="4_jwi4m"]
 [ext_resource type="Texture2D" uid="uid://c80q1g71jmaq1" path="res://Assets/Sprites/playerFrame192x216.png" id="4_rs0r1"]
 [ext_resource type="Script" path="res://Scripts/cameras.gd" id="4_xp2fc"]
-[ext_resource type="AudioStream" uid="uid://dbxignpwb7oo5" path="res://Assets/Sound/ambiant2.wav" id="5_cyv7g"]
-[ext_resource type="Script" path="res://Scenes/audio_player.gd" id="5_xnvwj"]
-[ext_resource type="AudioStream" uid="uid://b4tb8hnag4wgl" path="res://Assets/Sound/pas_j1.wav" id="6_xq3go"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("4_xp2fc")
@@ -60,18 +56,7 @@ position = Vector2(288, 108)
 texture = ExtResource("4_rs0r1")
 hframes = 3
 
-[node name="Map1" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(143.5, 81.5)
-scale = Vector2(0.515625, 4.90625)
-texture = ExtResource("4_jwi4m")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.679
 
-[node name="AudioPlayer" type="Node" parent="."]
-script = ExtResource("5_xnvwj")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioPlayer"]
-stream = ExtResource("5_cyv7g")
-
-[node name="step1" type="AudioStreamPlayer" parent="AudioPlayer"]
-stream = ExtResource("6_xq3go")
-volume_db = -6.18
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

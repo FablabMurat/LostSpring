@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjy7a3o41ejpt"]
+[gd_scene load_steps=13 format=3 uid="uid://bjy7a3o41ejpt"]
 
 [ext_resource type="PackedScene" uid="uid://cdi2waamsj162" path="res://Scenes/player.tscn" id="1_dehm5"]
 [ext_resource type="PackedScene" uid="uid://2s28rkfwb4ws" path="res://Scenes/flowerHodler.tscn" id="3_1edhd"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
 [ext_resource type="Script" path="res://Scenes/flower.gd" id="7_igdww"]
 [ext_resource type="Script" path="res://Scenes/door.gd" id="8_fb3g8"]
+[ext_resource type="PackedScene" uid="uid://cftsnut4p0qyw" path="res://Scenes/map_show.tscn" id="10_h78ec"]
+[ext_resource type="Script" path="res://Scenes/map_show.gd" id="11_yqobg"]
 
 [node name="Level1" type="Node2D"]
 
@@ -27,6 +29,9 @@ speed = 100
 
 [node name="Timer" type="Timer" parent="Player2"]
 wait_time = 0.2
+
+[node name="MapShow" parent="." instance=ExtResource("10_h78ec")]
+script = ExtResource("11_yqobg")
 
 [node name="flowerHolderYellow" parent="." instance=ExtResource("3_1edhd")]
 position = Vector2(448, 96)
@@ -144,40 +149,65 @@ texture_filter = 1
 position = Vector2(544, 2496)
 metadata/_edit_lock_ = true
 
+[node name="TimerFrame" type="Timer" parent="."]
+wait_time = 1.764
+one_shot = true
+
 [connection signal="timeout" from="Player1/Timer" to="Player1" method="_on_timer_timeout"]
 [connection signal="timeout" from="Player2/Timer" to="Player2" method="_on_timer_timeout"]
+[connection signal="_entered_map" from="MapShow" to="Player1" method="_on_map_show__entered_map"]
+[connection signal="_entered_map" from="MapShow" to="Player2" method="_on_map_show__entered_map"]
+[connection signal="_exited_map" from="MapShow" to="Player1" method="_on_map_show__exited_map"]
+[connection signal="_exited_map" from="MapShow" to="Player2" method="_on_map_show__exited_map"]
+[connection signal="body_entered" from="MapShow" to="MapShow" method="_on_body_entered"]
+[connection signal="body_exited" from="MapShow" to="MapShow" method="_on_body_exited"]
 [connection signal="_entered" from="flowerHolderYellow" to="Player1" method="_on_flower_holder__entered"]
 [connection signal="_entered" from="flowerHolderYellow" to="Player2" method="_on_flower_holder_yellow__entered"]
 [connection signal="body_entered" from="flowerHolderYellow" to="flowerHolderYellow" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerYellow" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="_entered" from="FlowerYellow" to="Player2" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerYellow" to="FlowerYellow" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerOrange" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="_entered" from="FlowerOrange" to="Player2" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerOrange" to="FlowerOrange" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderOrange" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="_entered" from="flowerHolderOrange" to="Player2" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderOrange" to="flowerHolderOrange" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderOlive" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="_entered" from="flowerHolderOlive" to="Player2" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderOlive" to="flowerHolderOlive" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerOlive" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="_entered" from="FlowerOlive" to="Player2" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerOlive" to="FlowerOlive" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderTeal" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="_entered" from="flowerHolderTeal" to="Player2" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderTeal" to="flowerHolderTeal" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerTeal" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="_entered" from="FlowerTeal" to="Player2" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerTeal" to="FlowerTeal" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerGreen" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="_entered" from="FlowerGreen" to="Player2" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerGreen" to="FlowerGreen" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderGreen" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="_entered" from="flowerHolderGreen" to="Player2" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderGreen" to="flowerHolderGreen" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerPlum" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="_entered" from="FlowerPlum" to="Player2" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerPlum" to="FlowerPlum" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderPlum" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="_entered" from="flowerHolderPlum" to="Player2" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderPlum" to="flowerHolderPlum" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerCyan" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="_entered" from="FlowerCyan" to="Player2" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerCyan" to="FlowerCyan" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderCyan" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="_entered" from="flowerHolderCyan" to="Player2" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderCyan" to="flowerHolderCyan" method="_on_body_entered"]
 [connection signal="_entered" from="FlowerSky_Blue" to="Player1" method="_on_flower_yellow__entered"]
+[connection signal="_entered" from="FlowerSky_Blue" to="Player2" method="_on_flower_yellow__entered"]
 [connection signal="body_entered" from="FlowerSky_Blue" to="FlowerSky_Blue" method="_on_body_entered"]
 [connection signal="_entered" from="flowerHolderSky_Blue" to="Player1" method="_on_flower_holder__entered"]
+[connection signal="_entered" from="flowerHolderSky_Blue" to="Player2" method="_on_flower_holder__entered"]
 [connection signal="body_entered" from="flowerHolderSky_Blue" to="flowerHolderSky_Blue" method="_on_body_entered"]
 [connection signal="_entered" from="Monster" to="Player1" method="_on_monster__entered"]
 [connection signal="_entered" from="Monster" to="Player2" method="_on_monster__entered"]
@@ -197,3 +227,5 @@ metadata/_edit_lock_ = true
 [connection signal="_exited" from="Monster3" to="Player2" method="_on_monster__exited"]
 [connection signal="body_entered" from="Monster3" to="Monster3" method="_on_body_entered"]
 [connection signal="body_exited" from="Monster3" to="Monster3" method="_on_body_exited"]
+[connection signal="timeout" from="TimerFrame" to="Player1" method="_on_timer_frame_timeout"]
+[connection signal="timeout" from="TimerFrame" to="Player2" method="_on_timer_frame_timeout"]

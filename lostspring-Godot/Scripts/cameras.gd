@@ -11,6 +11,9 @@ extends Node2D
 		player = $HBoxContainer/SubViewportContainer/Viewport1/Level/Player1
 	}
 }
+
+var frame = 0
+var playerNumber = 0
 func _ready() -> void:
 	# The world_2d object of the viewport contains information about what to
 	# render. Here, it's our game level. We need to pass it from the first to
@@ -44,3 +47,15 @@ func _process(delta: float) -> void:
 	var newPlayer1Y = floor(player1Y/screenHeight)*screenHeight-yOffset;
 	players["1"].camera.position.x = newPlayer1X-floor(screenWidth/2)+12;
 	players["1"].camera.position.y = newPlayer1Y-floor(screenHeight/2)+40;
+
+func chooseFrameText(newframe,currentPlayer):
+	frame = newframe
+	playerNumber = currentPlayer
+	print("image numero " + str(newframe) + " by player : " + str(playerNumber))
+	if currentPlayer == 1:
+		$PlayerFrame192x217.frame = frame
+	if currentPlayer == 2:
+		$PlayerFrame192x216.frame = frame
+
+func showMap(visibility,currentPlayer):
+	$Map1.visible = visibility

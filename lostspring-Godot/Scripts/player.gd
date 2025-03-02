@@ -10,7 +10,10 @@ var grabbedFlowerColor = ["none","none"]
 var playerIsOnMonster = false
 var animatedMonster
 var playerDeadBlind = 10
-
+@onready var rootNode = get_node("/root/Node2D")
+@onready var audioPlayerNode = get_node("/root/Node2D/AudioPlayer")
+var stepIsPlaying = false
+var frameNumber = 0
 func _ready():
 	var screen_size = get_viewport_rect().size
 	print(name)
@@ -49,7 +52,12 @@ func _physics_process(delta):
 	elif direction.y < 0:
 		playerSprite.animation = "runUp"
 	playerSprite.play()
-	
+	if velocity != Vector2.ZERO && stepIsPlaying== false:
+		stepIsPlaying = true
+		audioPlayerNode.playAudio("step1")
+	if velocity == Vector2.ZERO && stepIsPlaying== true:
+		stepIsPlaying = false
+		audioPlayerNode.pauseAudio("step1")
 	move_and_slide()
 
 	if playerIsOnMonster && animatedMonster.animation == "Idle":
@@ -64,30 +72,35 @@ func _physics_process(delta):
 
 
 func _on_flower_yellow__entered(flowerName: Variant,body) -> void:
-	var flowerPath = flowerName.get_path()
-	var animatedFlower = get_node(str(flowerPath) + "/flowerSprite")
-	prints(str(flowerPath) + "/flowerSprite")
-	animatedFlower.play()
-	var colorName = flowerName.name.substr(6,-1)
-	flowerName.visible = false
-	playerNumber = int(body.name.substr(6,-1))
-	grabbedFlowerColor[playerNumber-1] = colorName
+	var currentPlayerNumber = int(body.name.substr(6,-1))
+	if playerNumber == currentPlayerNumber:
+		var flowerPath = flowerName.get_path()
+		var animatedFlower = get_node(str(flowerPath) + "/flowerSprite")
+		prints(str(flowerPath) + "/flowerSprite")
+		animatedFlower.play()
+		var colorName = flowerName.name.substr(6,-1)
+		flowerName.visible = false
+		grabbedFlowerColor[currentPlayerNumber-1] = colorName
 
 func _on_flower_holder__entered(holderName: Variant,body) -> void:
-	var holderPath = holderName.get_path()
-	var animatedHolder = get_node(str(holderPath) + "/flowerHolderSprite")
-	prints(str(holderPath) + "/flowerHolderSprite")
-	var colorName = holderName.name.substr(12,-1)
-	playerNumber = int(body.name.substr(6,-1))
-	if colorName == grabbedFlowerColor[playerNumber-1]:
-		animatedHolder.play()
-		print("door" + colorName + "open")
-		var currentDoor = get_node(str(holderPath)+"/../Door"+colorName)
-		currentDoor.set_collision_layer_value(1,0)
-		var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
-		currentDoorSprite.play()
-		grabbedFlowerColor[playerNumber-1] = "colorName"
-		respawnPosition = body.position
+	var currentPlayerNumber = int(body.name.substr(6,-1))
+	if playerNumber == currentPlayerNumber:
+		var holderPath = holderName.get_path()
+		var animatedHolder = get_node(str(holderPath) + "/flowerHolderSprite")
+		prints(str(holderPath) + "/flowerHolderSprite")
+		var colorName = holderName.name.substr(12,-1)
+		if colorName == grabbedFlowerColor[playerNumber-1]:
+			animatedHolder.play()
+			print("door" + colorName + "open")
+			var currentDoor = get_node(str(holderPath)+"/../Door"+colorName)
+			currentDoor.set_collision_layer_value(1,0)
+			var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
+			currentDoorSprite.play()
+			grabbedFlowerColor[currentPlayerNumber-1] = "colorName"
+			respawnPosition = body.position
+			frameNumber = 1
+			rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
+			$"../TimerFrame".start()
 
 
 
@@ -110,8 +123,7 @@ func _on_monster__exited(monsterName: Variant, body: Variant) -> void:
 	var currentPlayerNumber  = int(body.name.substr(6,-1))
 	if currentPlayerNumber == playerNumber:
 		playerIsOnMonster = false
-func chooseFrameText(int):
-	get_tree().
+
 
 func _on_timer_timeout() -> void:
 	if playerDeadBlind != 0:
@@ -122,3 +134,29 @@ func _on_timer_timeout() -> void:
 		playerDeadBlind = 10
 		
 		$Timer.stop()
+
+
+func _on_timer_frame_timeout() -> void:
+	var currentPlayerNumber = int(self.name.substr(6,-1))
+	if frameNumber == 2:
+		frameNumber = 0
+		rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
+	if frameNumber == 1:
+		frameNumber = 2
+		print("passage frame i a 2")
+		rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
+		$"../TimerFrame".start()
+
+
+	
+	
+
+
+func _on_map_show__entered_map(emitter: Variant, body: Variant) -> void:
+	var currentPlayerNumber  = int(body.name.substr(6,-1))
+	rootNode.showMap(true,currentPlayerNumber)
+
+
+func _on_map_show__exited_map(emitter: Variant, body: Variant) -> void:
+	var currentPlayerNumber  = int(body.name.substr(6,-1))
+	rootNode.showMap(false,currentPlayerNumber)

@@ -76,9 +76,7 @@ func _physics_process(delta):
 		animatedMonster.animation = "PopUp"
 		playerIsOnMonster = false
 	
-	print("fin du jeu statut " + str(playerInEnd))
 	if playerInEnd[playerNumber-1] == true:
-		print("endofgame")
 		UINode.endOfTheGame(playerInEnd[playerNumber-1],playerNumber)
 
 
@@ -169,20 +167,17 @@ func _on_timer_frame_timeout() -> void:
 		print("passage frame i a 2")
 		rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
 		$"../TimerFrame".start()
-
-
-	
-	
-
-
+		
 func _on_map_show__entered_map(emitter: Variant, body: Variant) -> void:
 	var currentPlayerNumber  = int(body.name.substr(6,-1))
-	UINode.showMap(true,currentPlayerNumber)
+	if playerNumber == currentPlayerNumber:
+		UINode.showMap(true,currentPlayerNumber)
 
 
 func _on_map_show__exited_map(emitter: Variant, body: Variant) -> void:
 	var currentPlayerNumber  = int(body.name.substr(6,-1))
-	UINode.showMap(false,currentPlayerNumber)
+	if playerNumber == currentPlayerNumber:
+		UINode.showMap(false,currentPlayerNumber)
 
 
 func _on_level_end_body_entered(body: Node2D) -> void:

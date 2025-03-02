@@ -26,7 +26,7 @@ position = Vector2(24, 16)
 shape = SubResource("CircleShape2D_qo2b6")
 
 [node name="Player1" parent="." instance=ExtResource("1_dehm5")]
-position = Vector2(456, 120)
+position = Vector2(440, 96)
 collision_layer = 3
 speed = 100
 
@@ -42,6 +42,18 @@ wait_time = 0.2
 
 [node name="MapShow" parent="." instance=ExtResource("10_h78ec")]
 position = Vector2(639, 627)
+script = ExtResource("11_yqobg")
+
+[node name="MapShow3" parent="." instance=ExtResource("10_h78ec")]
+position = Vector2(440, 4656)
+script = ExtResource("11_yqobg")
+
+[node name="MapShow4" parent="." instance=ExtResource("10_h78ec")]
+position = Vector2(120, 4320)
+script = ExtResource("11_yqobg")
+
+[node name="MapShow2" parent="." instance=ExtResource("10_h78ec")]
+position = Vector2(496, 120)
 script = ExtResource("11_yqobg")
 
 [node name="flowerHolderYellow" parent="." instance=ExtResource("3_1edhd")]
@@ -70,7 +82,7 @@ position = Vector2(414, 1049)
 script = ExtResource("8_fb3g8")
 
 [node name="flowerHolderOlive" parent="." instance=ExtResource("3_1edhd")]
-position = Vector2(832, 1672)
+position = Vector2(808, 1680)
 script = ExtResource("3_q37o3")
 
 [node name="FlowerOlive" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
@@ -228,6 +240,24 @@ one_shot = true
 [connection signal="_exited_map" from="MapShow" to="Player2" method="_on_map_show__exited_map"]
 [connection signal="body_entered" from="MapShow" to="MapShow" method="_on_body_entered"]
 [connection signal="body_exited" from="MapShow" to="MapShow" method="_on_body_exited"]
+[connection signal="_entered_map" from="MapShow3" to="Player1" method="_on_map_show__entered_map"]
+[connection signal="_entered_map" from="MapShow3" to="Player2" method="_on_map_show__entered_map"]
+[connection signal="_exited_map" from="MapShow3" to="Player1" method="_on_map_show__exited_map"]
+[connection signal="_exited_map" from="MapShow3" to="Player2" method="_on_map_show__exited_map"]
+[connection signal="body_entered" from="MapShow3" to="MapShow3" method="_on_body_entered"]
+[connection signal="body_exited" from="MapShow3" to="MapShow3" method="_on_body_exited"]
+[connection signal="_entered_map" from="MapShow4" to="Player1" method="_on_map_show__entered_map"]
+[connection signal="_entered_map" from="MapShow4" to="Player2" method="_on_map_show__entered_map"]
+[connection signal="_exited_map" from="MapShow4" to="Player1" method="_on_map_show__exited_map"]
+[connection signal="_exited_map" from="MapShow4" to="Player2" method="_on_map_show__exited_map"]
+[connection signal="body_entered" from="MapShow4" to="MapShow4" method="_on_body_entered"]
+[connection signal="body_exited" from="MapShow4" to="MapShow4" method="_on_body_exited"]
+[connection signal="_entered_map" from="MapShow2" to="Player1" method="_on_map_show__entered_map"]
+[connection signal="_entered_map" from="MapShow2" to="Player2" method="_on_map_show__entered_map"]
+[connection signal="_exited_map" from="MapShow2" to="Player1" method="_on_map_show__exited_map"]
+[connection signal="_exited_map" from="MapShow2" to="Player2" method="_on_map_show__exited_map"]
+[connection signal="body_entered" from="MapShow2" to="MapShow2" method="_on_body_entered"]
+[connection signal="body_exited" from="MapShow2" to="MapShow2" method="_on_body_exited"]
 [connection signal="_entered" from="flowerHolderYellow" to="Player1" method="_on_flower_holder__entered"]
 [connection signal="_entered" from="flowerHolderYellow" to="Player2" method="_on_flower_holder_yellow__entered"]
 [connection signal="body_entered" from="flowerHolderYellow" to="flowerHolderYellow" method="_on_body_entered"]

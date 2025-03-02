@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://cftsnut4p0qyw"]
 
-[ext_resource type="Texture2D" uid="uid://cjhsm3rmlrx4b" path="res://icon.svg" id="1_lfogm"]
+[ext_resource type="Texture2D" uid="uid://baw1mj0sp7fby" path="res://Assets/Sprites/mapTriggerer16x8.png" id="1_osnry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiioj"]
+size = Vector2(16, 8)
 
 [node name="MapShow" type="Area2D"]
 position = Vector2(496, 280)
@@ -12,5 +13,4 @@ shape = SubResource("RectangleShape2D_qiioj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.66893e-05, 0)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("1_lfogm")
+texture = ExtResource("1_osnry")

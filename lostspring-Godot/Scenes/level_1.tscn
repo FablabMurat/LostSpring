@@ -18,6 +18,13 @@ radius = 72.0
 
 [node name="Level1" type="Node2D"]
 
+[node name="LevelEnd" type="Area2D" parent="."]
+position = Vector2(448, 2368)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
+position = Vector2(24, 16)
+shape = SubResource("CircleShape2D_qo2b6")
+
 [node name="Player1" parent="." instance=ExtResource("1_dehm5")]
 position = Vector2(480, 88)
 collision_layer = 3
@@ -206,13 +213,10 @@ metadata/_edit_lock_ = true
 wait_time = 1.764
 one_shot = true
 
-[node name="LevelEnd" type="Area2D" parent="."]
-position = Vector2(448, 2368)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
-position = Vector2(24, 16)
-shape = SubResource("CircleShape2D_qo2b6")
-
+[connection signal="body_entered" from="LevelEnd" to="Player1" method="_on_level_end_body_entered"]
+[connection signal="body_entered" from="LevelEnd" to="Player2" method="_on_level_end_body_entered"]
+[connection signal="body_exited" from="LevelEnd" to="Player1" method="_on_level_end_body_exited"]
+[connection signal="body_exited" from="LevelEnd" to="Player2" method="_on_level_end_body_exited"]
 [connection signal="timeout" from="Player1/Timer" to="Player1" method="_on_timer_timeout"]
 [connection signal="timeout" from="Player2/Timer" to="Player2" method="_on_timer_timeout"]
 [connection signal="_entered_map" from="MapShow" to="Player1" method="_on_map_show__entered_map"]
@@ -349,7 +353,3 @@ shape = SubResource("CircleShape2D_qo2b6")
 [connection signal="body_exited" from="Monster3" to="Monster3" method="_on_body_exited"]
 [connection signal="timeout" from="TimerFrame" to="Player1" method="_on_timer_frame_timeout"]
 [connection signal="timeout" from="TimerFrame" to="Player2" method="_on_timer_frame_timeout"]
-[connection signal="body_entered" from="LevelEnd" to="Player1" method="_on_level_end_body_entered"]
-[connection signal="body_entered" from="LevelEnd" to="Player2" method="_on_level_end_body_entered"]
-[connection signal="body_exited" from="LevelEnd" to="Player1" method="_on_level_end_body_exited"]
-[connection signal="body_exited" from="LevelEnd" to="Player2" method="_on_level_end_body_exited"]

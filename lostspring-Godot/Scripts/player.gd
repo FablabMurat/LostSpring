@@ -12,6 +12,7 @@ var animatedMonster
 var playerDeadBlind = 10
 @onready var rootNode = get_node("/root/Node2D")
 @onready var audioPlayerNode = get_node("/root/Node2D/AudioPlayer")
+@onready var flowerUINode = get_node("/root/Node2D/AudioPlayer")
 var stepIsPlaying = false
 var frameNumber = 0
 var playerInEnd = [false,false]
@@ -74,6 +75,9 @@ func _physics_process(delta):
 		$Timer.start()
 		animatedMonster.animation = "PopUp"
 		playerIsOnMonster = false
+		
+	if playerInEnd== [true,true]:
+		pass
 
 
 	
@@ -105,7 +109,7 @@ func _on_flower_holder__entered(holderName: Variant,body) -> void:
 			currentDoor.set_collision_layer_value(1,0)
 			var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
 			currentDoorSprite.play()
-			grabbedFlowerColor[currentPlayerNumber-1] = "colorName"
+			grabbedFlowerColor[currentPlayerNumber-1] = "none"
 			respawnPosition = body.position
 			frameNumber = 1
 			rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
@@ -182,5 +186,6 @@ func _on_level_end_body_entered(body: Node2D) -> void:
 
 func _on_level_end_body_exited(body: Node2D) -> void:
 	var currentPlayerNumber = int(body.name.substr(6,-1))
-	playerInEnd[currentPlayerNumber] = false
+	if currentPlayerNumber == playerNumber:
+		playerInEnd[currentPlayerNumber] = true
 	

@@ -79,7 +79,7 @@ func _physics_process(delta):
 	print("fin du jeu statut " + str(playerInEnd))
 	if playerInEnd[playerNumber-1] == true:
 		print("endofgame")
-		UINode.endOfTheGame(playerInEnd[playerNumber-1])
+		UINode.endOfTheGame(playerInEnd[playerNumber-1],playerNumber)
 
 
 	

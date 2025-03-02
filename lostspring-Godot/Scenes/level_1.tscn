@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dmsbukicybiou" path="res://Scenes/terrain1.tscn" id="7_a2lme"]
 [ext_resource type="Script" path="res://Scenes/flower.gd" id="7_igdww"]
 [ext_resource type="Script" path="res://Scenes/door.gd" id="8_fb3g8"]
-[ext_resource type="PackedScene" path="res://Scenes/map_show.tscn" id="10_h78ec"]
+[ext_resource type="PackedScene" uid="uid://cftsnut4p0qyw" path="res://Scenes/map_show.tscn" id="10_h78ec"]
 [ext_resource type="Script" path="res://Scenes/map_show.gd" id="11_yqobg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qo2b6"]
@@ -26,7 +26,7 @@ position = Vector2(24, 16)
 shape = SubResource("CircleShape2D_qo2b6")
 
 [node name="Player1" parent="." instance=ExtResource("1_dehm5")]
-position = Vector2(472, 2296)
+position = Vector2(456, 120)
 collision_layer = 3
 speed = 100
 
@@ -34,7 +34,7 @@ speed = 100
 wait_time = 0.2
 
 [node name="Player2" parent="." instance=ExtResource("1_dehm5")]
-position = Vector2(472, 2456)
+position = Vector2(496, 4672)
 speed = 100
 
 [node name="Timer" type="Timer" parent="Player2"]

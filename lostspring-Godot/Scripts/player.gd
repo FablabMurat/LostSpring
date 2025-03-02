@@ -12,7 +12,7 @@ var animatedMonster
 var playerDeadBlind = 10
 @onready var rootNode = get_node("/root/Node2D")
 @onready var audioPlayerNode = get_node("/root/Node2D/AudioPlayer")
-@onready var flowerUINode = get_node("/root/Node2D/FlowerUI")
+@onready var UINode = get_node("/root/Node2D/UI")
 var stepIsPlaying = false
 var frameNumber = 0
 var playerInEnd = [false,false]
@@ -75,9 +75,11 @@ func _physics_process(delta):
 		$Timer.start()
 		animatedMonster.animation = "PopUp"
 		playerIsOnMonster = false
-		
-	if playerInEnd== [true,true]:
-		pass
+	
+	print("fin du jeu statut " + str(playerInEnd))
+	if playerInEnd[playerNumber-1] == true:
+		print("endofgame")
+		UINode.endOfTheGame(playerInEnd[playerNumber-1])
 
 
 	
@@ -96,7 +98,7 @@ func _on_flower_yellow__entered(flowerName: Variant,body) -> void:
 		animatedFlower.play()
 		#flowerName.visible = false
 		grabbedFlowerColor[currentPlayerNumber-1] = colorName
-		flowerUINode.flowerColorUI(colorName,currentPlayerNumber)
+		UINode.flowerColorUI(colorName,currentPlayerNumber)
 		audioPlayerNode.playAudio("flower")
 
 func _on_flower_holder__entered(holderName: Variant,body) -> void:
@@ -114,7 +116,7 @@ func _on_flower_holder__entered(holderName: Variant,body) -> void:
 			var currentDoorSprite = get_node(str(currentDoor.get_path()) + "/doorSprite")
 			currentDoorSprite.play()
 			grabbedFlowerColor[currentPlayerNumber-1] = "none"
-			flowerUINode.flowerColorUI("none",currentPlayerNumber)
+			UINode.flowerColorUI("none",currentPlayerNumber)
 			respawnPosition = body.position
 			frameNumber = 1
 			rootNode.chooseFrameText(frameNumber,currentPlayerNumber)
@@ -175,22 +177,23 @@ func _on_timer_frame_timeout() -> void:
 
 func _on_map_show__entered_map(emitter: Variant, body: Variant) -> void:
 	var currentPlayerNumber  = int(body.name.substr(6,-1))
-	rootNode.showMap(true,currentPlayerNumber)
+	UINode.showMap(true,currentPlayerNumber)
 
 
 func _on_map_show__exited_map(emitter: Variant, body: Variant) -> void:
 	var currentPlayerNumber  = int(body.name.substr(6,-1))
-	rootNode.showMap(false,currentPlayerNumber)
+	UINode.showMap(false,currentPlayerNumber)
 
 
 func _on_level_end_body_entered(body: Node2D) -> void:
 	var currentPlayerNumber = int(body.name.substr(6,-1))
 	if currentPlayerNumber == playerNumber:
-		playerInEnd[playerNumber] = true
+		playerInEnd[playerNumber -1] = true
+
 
 
 func _on_level_end_body_exited(body: Node2D) -> void:
 	var currentPlayerNumber = int(body.name.substr(6,-1))
 	if currentPlayerNumber == playerNumber:
-		playerInEnd[currentPlayerNumber] = true
+		playerInEnd[currentPlayerNumber -1] = true
 	

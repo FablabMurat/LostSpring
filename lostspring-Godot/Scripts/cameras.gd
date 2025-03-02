@@ -56,6 +56,3 @@ func chooseFrameText(newframe,currentPlayer):
 		$PlayerFrame192x217.frame = frame
 	if currentPlayer == 2:
 		$PlayerFrame192x216.frame = frame
-
-func showMap(visibility,currentPlayer):
-	$Map1.visible = visibility

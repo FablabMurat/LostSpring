@@ -49,6 +49,7 @@ script = ExtResource("3_q37o3")
 
 [node name="FlowerYellow" parent="." groups=["flowers"] instance=ExtResource("4_44ya4")]
 position = Vector2(472, 144)
+collision_layer = 3
 script = ExtResource("7_igdww")
 
 [node name="DoorYellow" parent="." instance=ExtResource("5_rldx3")]

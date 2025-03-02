@@ -6,4 +6,6 @@ func _ready():
 	$flowerSprite.modulate = Color(colorName)
 
 func _on_body_entered(body: Node2D) -> void:
+
+	print("Monitoring disable")
 	_entered.emit(self,body)

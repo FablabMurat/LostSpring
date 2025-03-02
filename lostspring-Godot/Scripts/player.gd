@@ -14,15 +14,20 @@ var playerDeadBlind = 10
 @onready var audioPlayerNode = get_node("/root/Node2D/AudioPlayer")
 var stepIsPlaying = false
 var frameNumber = 0
+var playerInEnd = [false,false]
 func _ready():
 	var screen_size = get_viewport_rect().size
 	print(name)
+	if playerNumber == 1:
+		playerSprite.modulate = Color.SKY_BLUE
+	else:
+		playerSprite.modulate = Color.ORANGE
+		
 	#Recupere le numéro de joueur pour les commandes
 	for i in arrayInput.size():
 		var num_str: String = name
 		var num: int = num_str.right(num_str.length()-9).to_int()
 		arrayInput[i] = arrayInput[i] + str(num)
-	
 	respawnPosition = Vector2(self.position)
 	print("respawn point start " + "player" + str(playerNumber) +" " + str(respawnPosition))
 func _physics_process(delta):
@@ -34,8 +39,10 @@ func _physics_process(delta):
 
 	direction.x = Input.get_axis(arrayInput[0],arrayInput[1])
 	direction.y = Input.get_axis(arrayInput[2],arrayInput[3])
+	
 	velocity.x = int(speed * direction.x)
 	velocity.y = int(speed * direction.y)
+	
 	if direction == Vector2(0,0):
 		if playerSprite.animation == "runSide":
 			playerSprite.animation = "idleSide"
@@ -52,6 +59,7 @@ func _physics_process(delta):
 	elif direction.y < 0:
 		playerSprite.animation = "runUp"
 	playerSprite.play()
+	
 	if velocity != Vector2.ZERO && stepIsPlaying== false:
 		stepIsPlaying = true
 		audioPlayerNode.playAudio("step" + str(playerNumber))
@@ -110,6 +118,7 @@ func _on_monster__entered(monsterName: Variant,body) -> void:
 	var monsterPath = monsterName.get_path()
 	var currentPlayerNumber  = int(body.name.substr(6,-1))
 	if playerNumber == currentPlayerNumber:
+		audioPlayerNode.playAudio("monster")
 		playerIsOnMonster = true
 		print("monster entered by player " + str(currentPlayerNumber))
 		animatedMonster = get_node(str(monsterPath) + "/monsterSprite")
@@ -163,3 +172,15 @@ func _on_map_show__entered_map(emitter: Variant, body: Variant) -> void:
 func _on_map_show__exited_map(emitter: Variant, body: Variant) -> void:
 	var currentPlayerNumber  = int(body.name.substr(6,-1))
 	rootNode.showMap(false,currentPlayerNumber)
+
+
+func _on_level_end_body_entered(body: Node2D) -> void:
+	var currentPlayerNumber = int(body.name.substr(6,-1))
+	if currentPlayerNumber == playerNumber:
+		playerInEnd[playerNumber] = true
+
+
+func _on_level_end_body_exited(body: Node2D) -> void:
+	var currentPlayerNumber = int(body.name.substr(6,-1))
+	playerInEnd[currentPlayerNumber] = false
+	

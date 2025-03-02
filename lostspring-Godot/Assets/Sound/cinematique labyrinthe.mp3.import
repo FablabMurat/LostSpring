@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhmu2ooh87ne0"
+path="res://.godot/imported/cinematique labyrinthe.mp3-9984d68e0fe6e7ac1d4a9b93f53ade52.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/cinematique labyrinthe.mp3"
+dest_files=["res://.godot/imported/cinematique labyrinthe.mp3-9984d68e0fe6e7ac1d4a9b93f53ade52.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
